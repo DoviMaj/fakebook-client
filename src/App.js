@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
+  const [isAuth, setIsAuth] = useState();
+  const [loading, setLoading] = useState();
+
+  useEffect(() => {
+    checkForSession();
+  }, []);
+
+  async function checkForSession() {
+    setLoading(true);
+    const request = await fetch("http://localhost:5000/session", {
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const session = await request.json();
+    if (session) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
+    setLoading(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!loading && (
+        <div className="App">
+          {!isAuth ? (
+            <LoginPage />
+          ) : (
+            <button>
+              <a href="http://localhost:5000/auth/logout">Logout</a>
+            </button>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 
