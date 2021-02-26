@@ -1,0 +1,45 @@
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  width: 22em;
+  height: 10em;
+  background: white;
+  box-shadow: 0px 1px 6px 4px #0202020a;
+}
+
+.logo {
+  color: blueviolet;
+  font-weight: bolder;
+  letter-spacing: 1.4px;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.link-button {
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 15px 20px;
+  width: 90%;
+  background: blueviolet;
+  color: white;
+  font-size: large;
+  font-weight: bolder;
+  transition: all ease-in-out 0.3s;
+}
+
+.link-button:hover {
+  background: rgb(111, 32, 185);
+}
