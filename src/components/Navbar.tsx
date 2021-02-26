@@ -1,11 +1,12 @@
 import React from "react";
 import "./Navbar.scss";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user }: any) => {
   return (
     <nav className="top-nav">
       <div>
-        <div className="logo">
+        <Link to="/" className="logo">
           <svg
             viewBox="0 0 36 36"
             className="a8c37x1j ms05siws hwsy1cff b7h9ocf4"
@@ -32,16 +33,23 @@ const Navbar = () => {
               d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z"
             ></path>
           </svg>
-        </div>
+        </Link>
       </div>
       <div>hi</div>
-      <a
-        style={{ width: "initial" }}
-        className="link-button"
-        href="http://localhost:5000/auth/logout"
-      >
-        Logout
-      </a>
+      <div className="nav-right">
+        <Link to={`/profile`} className="user-profile">
+          <img alt="user-profile-pic" src={user.picture_url}></img>
+          <p>{user.username}</p>
+        </Link>
+
+        <a
+          style={{ width: "initial" }}
+          className="link-button"
+          href="http://localhost:5000/auth/logout"
+        >
+          Logout
+        </a>
+      </div>
     </nav>
   );
 };

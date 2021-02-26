@@ -5,7 +5,31 @@
   padding: 5px 20px;
   background: white;
   box-shadow: 0px 1px 6px 4px #0202020a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 
-.logo {
+.nav-right {
+  display: flex;
+}
+
+.user-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  padding: 0 13px;
+  gap: 10px;
+
+  img {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+  }
+  p {
+    font-weight: 500;
+  }
 }
