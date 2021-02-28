@@ -1,33 +1,41 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import Post from "../components/Post";
+import PostForm from "../components/PostForm";
+import "./TimelinePage.scss";
 
-const TimelinePage = () => {
-  const [posts, setPosts] = useState([]);
+const TimelinePage = ({ user }: any) => {
+  type PostsType = [];
+  const [posts, setPosts] = useState<PostsType | undefined>(undefined);
   useEffect(() => {
-    async function getPosts() {
-      const req = await fetch("http://localhost:5000/api/timeline", {
-        credentials: "include",
-        // headers: {
-        //   "Content-Type": "application/json",
-        //   // 'Content-Type': 'application/x-www-form-urlencoded',
-        // },
-      });
-      const posts = await req.json();
-      setPosts(posts);
-      console.log(posts);
-    }
     getPosts();
   }, []);
 
+  async function getPosts() {
+    const req = await fetch("http://localhost:5000/api/timeline", {
+      credentials: "include",
+    });
+    const postList = await req.json();
+    console.log(postList);
+
+    setPosts(postList);
+  }
+
+  const updatePosts = () => {
+    getPosts();
+  };
+
   return (
-    <>
-      <Navbar />
-      <p>{posts}</p>
-      {posts &&
-        posts.map((post: []) => {
-          return <li>{post}</li>;
-        })}
-    </>
+    <main>
+      <Navbar user={user} />
+      <div className="timeline">
+        <PostForm updatePosts={updatePosts} user={user} />
+        {posts &&
+          posts!.map((post: any) => {
+            return <Post user={user} post={post} />;
+          })}
+      </div>
+    </main>
   );
 };
 
