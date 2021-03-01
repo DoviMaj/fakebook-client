@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./CommentForm.scss";
-const CommentForm = ({ user, postId }: any) => {
+const CommentForm = ({ user, postId, updatePosts }: any) => {
   const [comment, setComment] = useState("");
-  const handleForm = async () => {
+  const handleForm = async (e: any) => {
+    e.preventDefault();
     if (comment !== "") {
       console.log(comment);
 
@@ -21,7 +22,7 @@ const CommentForm = ({ user, postId }: any) => {
           }
         );
         setComment("");
-        // updateComments();
+        updatePosts();
       } catch (err) {
         console.error(err);
       }
@@ -36,10 +37,9 @@ const CommentForm = ({ user, postId }: any) => {
       ></img>
       <input
         placeholder="Write a comment..."
-        onKeyPress={(e) => e.key === "Enter" && handleForm()}
+        onKeyPress={(e) => e.key === "Enter" && handleForm(e)}
         value={comment}
         onChange={(e: any) => {
-          e.preventDefault();
           setComment(e.target.value);
         }}
       ></input>

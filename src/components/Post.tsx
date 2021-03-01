@@ -6,7 +6,7 @@ import differenceInMinutes from "date-fns/differenceInMinutes";
 import differenceInHours from "date-fns/differenceInHours";
 import CommentList from "./CommentList";
 
-const Post = ({ post, user }: any) => {
+const Post = ({ post, user, updatePosts }: any) => {
   const now = new Date();
   const postDate = new Date(Date.parse(post.date));
   const diffHrs = differenceInHours(now, postDate);
@@ -36,7 +36,7 @@ const Post = ({ post, user }: any) => {
       </div>
 
       <p>{post.text}</p>
-      <CommentForm postId={post._id} user={user} />
+      <CommentForm updatePosts={updatePosts} postId={post._id} user={user} />
       <CommentList comments={post.comments} />
     </div>
   );

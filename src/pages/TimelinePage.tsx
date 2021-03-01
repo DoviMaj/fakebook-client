@@ -32,7 +32,14 @@ const TimelinePage = ({ user }: any) => {
         <PostForm updatePosts={updatePosts} user={user} />
         {posts &&
           posts!.map((post: any) => {
-            return <Post user={user} post={post} />;
+            return (
+              <Post
+                key={post._id}
+                updatePosts={updatePosts}
+                user={user}
+                post={post}
+              />
+            );
           })}
       </div>
     </main>
