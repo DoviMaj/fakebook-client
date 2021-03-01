@@ -4,7 +4,7 @@ import Post from "../components/Post";
 import PostForm from "../components/PostForm";
 import "./TimelinePage.scss";
 
-const TimelinePage = ({ user }: any) => {
+const TimelinePage = () => {
   type PostsType = [];
   const [posts, setPosts] = useState<PostsType | undefined>(undefined);
   useEffect(() => {
@@ -27,18 +27,13 @@ const TimelinePage = ({ user }: any) => {
 
   return (
     <main>
-      <Navbar user={user} />
+      <Navbar />
       <div className="timeline">
-        <PostForm updatePosts={updatePosts} user={user} />
+        <PostForm updatePosts={updatePosts} />
         {posts &&
           posts!.map((post: any) => {
             return (
-              <Post
-                key={post._id}
-                updatePosts={updatePosts}
-                user={user}
-                post={post}
-              />
+              <Post key={post._id} updatePosts={updatePosts} post={post} />
             );
           })}
       </div>

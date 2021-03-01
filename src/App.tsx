@@ -1,19 +1,15 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
 import LoginPage from "./pages/LoginPage";
-// import TimelinePage from "./pages/TimelinePage";
+import { userContext } from "./GlobalContext";
 const TimelinePage = lazy(() => import("./pages/TimelinePage"));
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<object>();
+
   useEffect(() => {
     checkForSession();
   }, []);
@@ -37,7 +33,7 @@ function App() {
     setLoading(false);
   }
 
-  const renderLoader = () => <p>Loading</p>;
+  const renderLoader = () => <p>Loading...</p>;
 
   return (
     <>
@@ -49,7 +45,9 @@ function App() {
                 <LoginPage />
               ) : (
                 <Suspense fallback={renderLoader()}>
-                  <TimelinePage user={user} />
+                  <userContext.Provider value={user}>
+                    <TimelinePage />
+                  </userContext.Provider>
                 </Suspense>
               )}
             </Route>

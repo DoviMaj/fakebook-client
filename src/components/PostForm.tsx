@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./PostForm.scss";
+import { userContext } from "../GlobalContext";
 
-const PostForm = ({ user, updatePosts }: any) => {
+const PostForm = ({ updatePosts }: any) => {
+  const currentUser = useContext(userContext);
   const [input, setInput] = useState("");
   const handleForm = async (e: any) => {
     e.preventDefault();
@@ -31,14 +33,14 @@ const PostForm = ({ user, updatePosts }: any) => {
     <>
       <form className="post-form">
         <div>
-          <img alt="user-profile-pic" src={user.picture_url}></img>
+          <img alt="user-profile-pic" src={currentUser.picture_url}></img>
           <input
             value={input}
             onKeyPress={(e: any) => e.key === "Enter" && handleForm(e)}
             onChange={(e: any) => {
               handleChange(e);
             }}
-            placeholder={`What's on your mind, ${user.username}?`}
+            placeholder={`What's on your mind, ${currentUser.username}?`}
           ></input>
         </div>
 

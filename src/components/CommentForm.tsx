@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./CommentForm.scss";
-const CommentForm = ({ user, postId, updatePosts }: any) => {
+import { userContext } from "../GlobalContext";
+
+const CommentForm = ({ postId, updatePosts }: any) => {
+  const currentUser = useContext(userContext);
+
   const [comment, setComment] = useState("");
   const handleForm = async (e: any) => {
     e.preventDefault();
@@ -33,7 +37,7 @@ const CommentForm = ({ user, postId, updatePosts }: any) => {
       <img
         className="comment-img"
         alt="profile pic"
-        src={user.picture_url}
+        src={currentUser.picture_url}
       ></img>
       <input
         placeholder="Write a comment..."

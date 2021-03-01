@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
 import "./Post.scss";
@@ -6,7 +6,7 @@ import differenceInMinutes from "date-fns/differenceInMinutes";
 import differenceInHours from "date-fns/differenceInHours";
 import CommentList from "./CommentList";
 
-const Post = ({ post, user, updatePosts }: any) => {
+const Post = ({ post, updatePosts }: any) => {
   const now = new Date();
   const postDate = new Date(Date.parse(post.date));
   const diffHrs = differenceInHours(now, postDate);
@@ -36,7 +36,7 @@ const Post = ({ post, user, updatePosts }: any) => {
       </div>
 
       <p>{post.text}</p>
-      <CommentForm updatePosts={updatePosts} postId={post._id} user={user} />
+      <CommentForm updatePosts={updatePosts} postId={post._id} />
       <CommentList comments={post.comments} />
     </div>
   );

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
+import { userContext } from "../GlobalContext";
 
-const Navbar = ({ user }: any) => {
+const Navbar = () => {
+  const currentUser = useContext(userContext);
   return (
     <nav className="top-nav">
       <div>
@@ -35,11 +37,10 @@ const Navbar = ({ user }: any) => {
           </svg>
         </Link>
       </div>
-      <div>hi</div>
       <div className="nav-right">
         <Link to={`/profile`} className="user-profile">
-          <img alt="user-profile-pic" src={user.picture_url}></img>
-          <p>{user.username}</p>
+          <img alt="user-profile-pic" src={currentUser.picture_url}></img>
+          <p>{currentUser.username}</p>
         </Link>
 
         <a
