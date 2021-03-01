@@ -1,0 +1,30 @@
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .comment-wrapper {
+    display: flex;
+    gap: 13px;
+  }
+
+  .comment-text {
+    background: #f0f2f5;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+
+    .username {
+      font-weight: 500;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
