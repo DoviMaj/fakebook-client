@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
   width: 22em;
   height: 10em;
@@ -30,14 +30,17 @@
 .link-button {
   display: flex;
   justify-content: center;
+  border: none;
   border-radius: 8px;
+  outline: inherit;
   padding: 15px 20px;
-  width: 90%;
+  width: 100%;
   background: blueviolet;
   color: white;
   font-size: large;
   font-weight: bolder;
   transition: all ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .link-button:hover {
