@@ -1,9 +1,9 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/Login/LoginPage";
 import { userContext } from "./GlobalContext";
-const TimelinePage = lazy(() => import("./pages/TimelinePage"));
+const TimelinePage = lazy(() => import("./pages/Timeline/TimelinePage"));
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);

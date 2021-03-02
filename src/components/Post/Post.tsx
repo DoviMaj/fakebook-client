@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CommentForm from "./CommentForm";
+import CommentForm from "../CommentForm/CommentForm";
 import "./Post.scss";
 import differenceInMinutes from "date-fns/differenceInMinutes";
 import differenceInHours from "date-fns/differenceInHours";
-import CommentList from "./CommentList";
+import CommentList from "../CommentList/CommentList";
 
 const Post = ({ post, updatePosts }: any) => {
   const now = new Date();

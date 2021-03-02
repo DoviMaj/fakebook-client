@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./CommentForm.scss";
-import { userContext } from "../GlobalContext";
+import { userContext } from "../../GlobalContext";
 
 const CommentForm = ({ postId, updatePosts }: any) => {
   const currentUser = useContext(userContext);

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./PostForm.scss";
-import { userContext } from "../GlobalContext";
+import { userContext } from "../../GlobalContext";
 
 const PostForm = ({ updatePosts }: any) => {
   const currentUser = useContext(userContext);

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
-import { userContext } from "../GlobalContext";
+import { userContext } from "../../GlobalContext";
 
 const Navbar = () => {
   const currentUser = useContext(userContext);
