@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Post from "../../components/Post/Post";
 import PostForm from "../../components/PostForm/PostForm";
+import SideBar from "../../components/SideBar/SideBar";
 import "./TimelinePage.scss";
 
 const TimelinePage = () => {
   type PostsType = [];
   const [posts, setPosts] = useState<PostsType | undefined>(undefined);
   useEffect(() => {
+    document.title = "Fakebook";
     getPosts();
   }, []);
 
@@ -16,8 +18,6 @@ const TimelinePage = () => {
       credentials: "include",
     });
     const postList = await req.json();
-    console.log(postList);
-
     setPosts(postList);
   }
 
@@ -28,14 +28,18 @@ const TimelinePage = () => {
   return (
     <main>
       <Navbar />
+
       <div className="timeline">
-        <PostForm updatePosts={updatePosts} />
-        {posts &&
-          posts!.map((post: any) => {
-            return (
-              <Post key={post._id} updatePosts={updatePosts} post={post} />
-            );
-          })}
+        <SideBar />
+        <div className="posts">
+          <PostForm updatePosts={updatePosts} />
+          {posts &&
+            posts!.map((post: any) => {
+              return (
+                <Post key={post._id} updatePosts={updatePosts} post={post} />
+              );
+            })}
+        </div>
       </div>
     </main>
   );
