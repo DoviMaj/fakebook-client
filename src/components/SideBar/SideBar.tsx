@@ -14,7 +14,8 @@ const SideBar = () => {
         <p>{currentUser.username}</p>
       </Link>
       <Link to="/friends">
-        <FontAwesomeIcon icon={faUserFriends} /> <p>Friends</p>
+        <FontAwesomeIcon style={{ width: "30px" }} icon={faUserFriends} />{" "}
+        <p>Friends</p>
       </Link>
     </div>
   );
