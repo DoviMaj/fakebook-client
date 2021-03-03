@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { userContext } from "../../GlobalContext";
 import "./SideBar.scss";
+import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SideBar = () => {
   const currentUser = useContext(userContext);
@@ -12,8 +14,7 @@ const SideBar = () => {
         <p>{currentUser.username}</p>
       </Link>
       <Link to="/friends">
-        <img alt="" src={""}></img>
-        <p>Friends</p>
+        <FontAwesomeIcon icon={faUserFriends} /> <p>Friends</p>
       </Link>
     </div>
   );

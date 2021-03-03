@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 // export type GlobalContent = {
 //   user: {};
 //   getUser: (c: string) => void;
@@ -7,6 +7,7 @@ import { createContext, useContext } from "react";
 //   user: {}, // set a default value
 //   getUser: () => {},
 // });
+
 
 export const userContext = createContext({} as any);
 

@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import CommentForm from "../CommentForm/CommentForm";
 import "./Post.scss";
 import differenceInMinutes from "date-fns/differenceInMinutes";
 import differenceInHours from "date-fns/differenceInHours";
 import CommentList from "../CommentList/CommentList";
+import PostLikes from "../PostLikes/PostLikes";
 
 const Post = ({ post, updatePosts }: any) => {
-  const now = new Date();
-  const postDate = new Date(Date.parse(post.date));
+  const now = new Date();  
+  const postDate = new Date(post.date);
   const diffHrs = differenceInHours(now, postDate);
   const diffMins = differenceInMinutes(now, postDate);
   const fullDate = postDate.toLocaleDateString("en-gb", {
@@ -28,7 +29,7 @@ const Post = ({ post, updatePosts }: any) => {
   return (
     <div className="post">
       <div className="post-profile">
-        <img src={post.User.picture_url}></img>
+        <img alt='user-profile-pic' src={post.User.picture_url}></img>
         <div>
           <Link to="/profile">{post.User.username}</Link>
           <p>{displayDate}</p>
@@ -36,6 +37,7 @@ const Post = ({ post, updatePosts }: any) => {
       </div>
 
       <p>{post.text}</p>
+      <PostLikes post={post} />
       <CommentForm updatePosts={updatePosts} postId={post._id} />
       <CommentList comments={post.comments} />
     </div>

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./LoginPage.scss";
 
 function LoginPage() {
+  useEffect(() => {
+    document.title = "Fakebook | Login";
+  }, []);
   return (
     <div className="login-wrapper">
       <div className="login-form">

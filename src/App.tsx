@@ -2,7 +2,9 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
 import LoginPage from "./pages/Login/LoginPage";
-import { userContext } from "./GlobalContext";
+import {  userContext } from "./GlobalContext";
+import FriendsPage from "./pages/Friends/FriendsPage";
+import ProfilePage from "./pages/Profile/ProfilePage";
 const TimelinePage = lazy(() => import("./pages/Timeline/TimelinePage"));
 
 function App() {
@@ -45,13 +47,22 @@ function App() {
                 <LoginPage />
               ) : (
                 <Suspense fallback={renderLoader()}>
-                  <userContext.Provider value={user}>
+                  <userContext.Provider value={user as any}>
                     <TimelinePage />
                   </userContext.Provider>
                 </Suspense>
               )}
             </Route>
-            <Route path="/"></Route>
+            <Route path="/friends">
+              <userContext.Provider value={user}>
+                <FriendsPage />
+              </userContext.Provider>
+            </Route>
+            <Route>
+              <userContext.Provider value={user}>
+                <ProfilePage />
+              </userContext.Provider>
+            </Route>
           </Switch>
         </Router>
       )}

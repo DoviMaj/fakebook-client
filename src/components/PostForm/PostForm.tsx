@@ -10,7 +10,7 @@ const PostForm = ({ updatePosts }: any) => {
     if (input !== "") {
       const data = { text: input };
       try {
-        const req = await fetch("http://localhost:5000/api/posts", {
+        await fetch("http://localhost:5000/api/posts", {
           method: "post",
           credentials: "include",
           headers: {
@@ -31,17 +31,28 @@ const PostForm = ({ updatePosts }: any) => {
   };
   return (
     <>
+      {/* <div className="post-form">
+        <img alt="user-profile-pic" src={currentUser.picture_url}></img>
+        <input
+          value={input}
+          onKeyPress={(e: any) => e.key === "Enter" && handleForm(e)}
+          onClick={(e: any) => {
+            handleChange(e);
+          }}
+          placeholder={`What's on your mind, ${currentUser.username}?`}
+        ></input>
+      </div> */}
       <form className="post-form">
         <div>
           <img alt="user-profile-pic" src={currentUser.picture_url}></img>
-          <input
+          <textarea
             value={input}
-            onKeyPress={(e: any) => e.key === "Enter" && handleForm(e)}
+            // onKeyPress={(e: any) => e.key === "Enter" && e.preventDefault()}
             onChange={(e: any) => {
               handleChange(e);
             }}
             placeholder={`What's on your mind, ${currentUser.username}?`}
-          ></input>
+          ></textarea>
         </div>
 
         <button

@@ -13,7 +13,7 @@ const CommentForm = ({ postId, updatePosts }: any) => {
 
       const data = { text: comment };
       try {
-        const req = await fetch(
+        await fetch(
           `http://localhost:5000/api/posts/${postId}/comments`,
           {
             method: "post",
