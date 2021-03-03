@@ -31,23 +31,11 @@ const PostForm = ({ updatePosts }: any) => {
   };
   return (
     <>
-      {/* <div className="post-form">
-        <img alt="user-profile-pic" src={currentUser.picture_url}></img>
-        <input
-          value={input}
-          onKeyPress={(e: any) => e.key === "Enter" && handleForm(e)}
-          onClick={(e: any) => {
-            handleChange(e);
-          }}
-          placeholder={`What's on your mind, ${currentUser.username}?`}
-        ></input>
-      </div> */}
       <form className="post-form">
         <div>
           <img alt="user-profile-pic" src={currentUser.picture_url}></img>
           <textarea
             value={input}
-            // onKeyPress={(e: any) => e.key === "Enter" && e.preventDefault()}
             onChange={(e: any) => {
               handleChange(e);
             }}
