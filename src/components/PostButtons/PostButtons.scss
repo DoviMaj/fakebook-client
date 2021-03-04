@@ -20,7 +20,7 @@
     gap: 5px;
     padding: 3px 31px;
     margin: 5px 0;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
 
     &:hover {
@@ -33,6 +33,10 @@
     path {
       fill: gray;
       transform: scale(1.2);
+    }
+
+    .liked path {
+      fill: blueviolet;
     }
   }
 }
