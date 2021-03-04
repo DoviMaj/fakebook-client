@@ -1,0 +1,15 @@
+.count-wrapper {
+  display: grid;
+  grid-template-areas: "like comment";
+  justify-content: space-between;
+
+  .like-counter {
+    grid-area: like;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .comment-counter {
+    grid-area: comment;
+  }
+}
