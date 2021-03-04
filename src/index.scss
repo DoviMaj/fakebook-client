@@ -1,6 +1,5 @@
 @import-normalize; /* bring in normalize.css styles */
-
-$background-color: #f0f2f5;
+@import "./vars.scss";
 
 body {
   margin: 0;
