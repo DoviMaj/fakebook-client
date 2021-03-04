@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Post from "../../components/Post/Post";
 import PostForm from "../../components/PostForm/PostForm";
-import SideBar from "../../components/SideBar/SideBar";
+import SideBar from "../../components/TimelineSideBar/TimelineSidebar";
 import "./TimelinePage.scss";
 
 const TimelinePage = () => {
@@ -26,7 +26,7 @@ const TimelinePage = () => {
   };
 
   return (
-    <main>
+    <>
       <Navbar />
 
       <div className="timeline">
@@ -41,7 +41,7 @@ const TimelinePage = () => {
             })}
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

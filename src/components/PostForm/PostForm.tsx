@@ -30,31 +30,29 @@ const PostForm = ({ updatePosts }: any) => {
     setInput(e.target.value);
   };
   return (
-    <>
-      <form className="post-form">
-        <div>
-          <img alt="user-profile-pic" src={currentUser.picture_url}></img>
-          <textarea
-            value={input}
-            onChange={(e: any) => {
-              handleChange(e);
-            }}
-            placeholder={`What's on your mind, ${currentUser.username}?`}
-          ></textarea>
-        </div>
-
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            handleForm(e);
+    <form className="post-form">
+      <div>
+        <img alt="user-profile-pic" src={currentUser.picture_url}></img>
+        <textarea
+          value={input}
+          onChange={(e: any) => {
+            handleChange(e);
           }}
-          className="link-button"
-        >
-          Post
-        </button>
-      </form>
-    </>
+          placeholder={`What's on your mind, ${currentUser.username}?`}
+        ></textarea>
+      </div>
+
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          handleForm(e);
+        }}
+        className="link-button"
+      >
+        Post
+      </button>
+    </form>
   );
 };
 
