@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import Post from "../../components/Post/Post";
-import PostForm from "../../components/PostForm/PostForm";
+import Post from "../../components/Post/Post/Post";
+import PostForm from "../../components/Post/PostForm/PostForm";
 import SideBar from "../../components/TimelineSideBar/TimelineSidebar";
 import "./TimelinePage.scss";
 

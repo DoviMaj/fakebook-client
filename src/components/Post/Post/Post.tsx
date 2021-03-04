@@ -7,7 +7,7 @@ import differenceInHours from "date-fns/differenceInHours";
 import CommentList from "../CommentList/CommentList";
 import PostButtons from "../PostButtons/PostButtons";
 import LikesAndCommentsCount from "../LikesAndCommentsCount/LikesAndCommentsCount";
-import { userContext } from "../../GlobalContext";
+import { userContext } from "../../../GlobalContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
@@ -83,12 +83,12 @@ const Post = ({ post, updatePosts }: any) => {
         updatePosts={updatePosts}
         post={post}
       />
+      <CommentList comments={post.comments} />
       <CommentForm
         inputEl={inputEl}
         updatePosts={updatePosts}
         postId={post._id}
       />
-      <CommentList comments={post.comments} />
     </div>
   );
 };
