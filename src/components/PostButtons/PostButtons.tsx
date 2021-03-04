@@ -5,7 +5,7 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faCommentAlt } from "@fortawesome/free-regular-svg-icons";
 import { faShareSquare } from "@fortawesome/free-regular-svg-icons";
 
-const PostButtons = ({ post, updatePosts }: any) => {
+const PostButtons = ({ post, updatePosts, onButtonClick }: any) => {
   const [hasUserLiked, setHasUserLiked] = useState(false);
   const handleLike = async () => {
     console.log("hi");
@@ -45,7 +45,7 @@ const PostButtons = ({ post, updatePosts }: any) => {
           />
           <p>Like</p>
         </div>
-        <div className="button">
+        <div className="button" onClick={onButtonClick}>
           <FontAwesomeIcon className="icon" icon={faCommentAlt} />
           <p>Comment</p>
         </div>

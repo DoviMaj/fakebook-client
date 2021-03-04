@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import CommentForm from "../CommentForm/CommentForm";
 import "./Post.scss";
@@ -16,6 +16,11 @@ const Post = ({ post, updatePosts }: any) => {
   const currentUser = useContext(userContext);
   const isOwnUserPost = post.User._id === currentUser._id;
 
+  const inputEl: any = useRef(null);
+  const onButtonClick = () => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  };
   const now = new Date();
   const postDate = new Date(post.date);
   const diffHrs = differenceInHours(now, postDate);
@@ -72,8 +77,17 @@ const Post = ({ post, updatePosts }: any) => {
       <p>{post.text}</p>
 
       <LikesAndCommentsCount post={post} />
-      <PostButtons updatePosts={updatePosts} post={post} />
-      <CommentForm updatePosts={updatePosts} postId={post._id} />
+      <PostButtons
+        onButtonClick={onButtonClick}
+        inputEl={inputEl}
+        updatePosts={updatePosts}
+        post={post}
+      />
+      <CommentForm
+        inputEl={inputEl}
+        updatePosts={updatePosts}
+        postId={post._id}
+      />
       <CommentList comments={post.comments} />
     </div>
   );
