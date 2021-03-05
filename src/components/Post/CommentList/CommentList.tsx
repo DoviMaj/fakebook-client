@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./CommentList.scss";
 
 const CommentList = ({ comments, commentsVisible }: any) => {
@@ -20,7 +21,9 @@ const CommentList = ({ comments, commentsVisible }: any) => {
             <div key={comment._id} className="comment-wrapper">
               <img alt="user-pic" src={comment.User.picture_url}></img>
               <div className="comment-text">
-                <p className="username">{comment.User.username}</p>
+                <Link to={`${comment.User._id}`} className="username">
+                  {comment.User.username}
+                </Link>
                 <p>{comment.text}</p>
               </div>
             </div>
