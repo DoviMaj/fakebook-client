@@ -13,6 +13,7 @@ import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
 const Post = ({ post, updatePosts }: any) => {
   const [isHover, setIsHover] = useState(false);
+  const [commentsVisible, setCommentsVisible] = useState(true);
   const currentUser = useContext(userContext);
   const isOwnUserPost = post.User._id === currentUser._id;
 
@@ -53,6 +54,10 @@ const Post = ({ post, updatePosts }: any) => {
       console.log(err);
     }
   };
+
+  const toggleCommentsVisible = () => {
+    setCommentsVisible((commentsVisible) => !commentsVisible);
+  };
   return (
     <div
       className="post"
@@ -76,14 +81,17 @@ const Post = ({ post, updatePosts }: any) => {
       </div>
       <p>{post.text}</p>
 
-      <LikesAndCommentsCount post={post} />
+      <LikesAndCommentsCount
+        toggleCommentsVisible={toggleCommentsVisible}
+        post={post}
+      />
       <PostButtons
         onButtonClick={onButtonClick}
         inputEl={inputEl}
         updatePosts={updatePosts}
         post={post}
       />
-      <CommentList comments={post.comments} />
+      <CommentList commentsVisible={commentsVisible} comments={post.comments} />
       <CommentForm
         inputEl={inputEl}
         updatePosts={updatePosts}

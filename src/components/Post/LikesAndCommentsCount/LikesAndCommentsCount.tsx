@@ -1,7 +1,7 @@
 import React from "react";
 import "./LikesAndCommentsCount.scss";
 
-const LikesAndCommentsCount = ({ post }: any) => {
+const LikesAndCommentsCount = ({ post, toggleCommentsVisible }: any) => {
   return (
     <div className="count-wrapper">
       {post.likes > 0 && (
@@ -17,7 +17,7 @@ const LikesAndCommentsCount = ({ post }: any) => {
         </div>
       )}
       {post.comments.length > 0 && (
-        <p className="comment-counter">
+        <p className="comment-counter" onClick={toggleCommentsVisible}>
           {post.comments.length} Comment{post.comments.length > 1 ? "s" : ""}
         </p>
       )}

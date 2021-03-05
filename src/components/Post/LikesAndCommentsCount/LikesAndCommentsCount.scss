@@ -2,6 +2,7 @@
   display: grid;
   grid-template-areas: "like comment";
   justify-content: space-between;
+  color: #696666;
 
   .like-counter {
     grid-area: like;
@@ -9,7 +10,13 @@
     align-items: center;
     gap: 4px;
   }
+
   .comment-counter {
     grid-area: comment;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
