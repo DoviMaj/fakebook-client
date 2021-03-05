@@ -34,7 +34,7 @@ const CommentForm = ({ postId, updatePosts, inputEl }: any) => {
       <img
         className="comment-img"
         alt="profile pic"
-        src={currentUser.picture_url}
+        src={currentUser?.picture_url}
       ></img>
       <input
         ref={inputEl}

@@ -11,16 +11,34 @@ import { userContext } from "../../../GlobalContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
-const Post = ({ post, updatePosts }: any) => {
+type Props = {
+  post: {
+    _id: string;
+    text: string;
+    User: { _id: string; picture_url: string; username: string; text: string };
+    likes: number;
+    comments: {
+      User: object;
+      text: string;
+      likes: number;
+      date: string;
+    };
+    date: string;
+  };
+  updatePosts: () => void;
+};
+
+const Post: React.FC<Props> = ({ post, updatePosts }) => {
   const [isHover, setIsHover] = useState(false);
   const [commentsVisible, setCommentsVisible] = useState(true);
   const currentUser = useContext(userContext);
-  const isOwnUserPost = post.User._id === currentUser._id;
+  const isOwnUserPost = post.User._id === currentUser?._id;
 
-  const inputEl: any = useRef(null);
+  const inputEl = useRef<HTMLInputElement>(null);
   const onButtonClick = () => {
-    // `current` points to the mounted text input element
-    inputEl.current.focus();
+    if (inputEl && inputEl.current) {
+      inputEl.current.focus();
+    }
   };
   const now = new Date();
   const postDate = new Date(post.date);
@@ -42,8 +60,6 @@ const Post = ({ post, updatePosts }: any) => {
       : `${diffHrs}h`;
 
   const handleDeletePost = async () => {
-    console.log("hi");
-
     try {
       await fetch(`http://localhost:5000/api/posts/${post._id}`, {
         credentials: "include",

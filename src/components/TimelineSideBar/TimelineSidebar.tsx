@@ -10,8 +10,8 @@ const SideBar = () => {
   return (
     <div className="side-bar">
       <Link to="/profile">
-        <img alt="user-profile-pic" src={currentUser.picture_url}></img>
-        <p>{currentUser.username}</p>
+        <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
+        <p>{currentUser?.username}</p>
       </Link>
       <Link to="/friends">
         <FontAwesomeIcon style={{ width: "30px" }} icon={faUserFriends} />{" "}

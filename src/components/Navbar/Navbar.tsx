@@ -39,8 +39,8 @@ const Navbar = () => {
       </div>
       <div className="nav-right">
         <Link to={`/profile`} className="user-profile">
-          <img alt="user-profile-pic" src={currentUser.picture_url}></img>
-          <p>{currentUser.username}</p>
+          <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
+          <p>{currentUser?.username}</p>
         </Link>
 
         <a

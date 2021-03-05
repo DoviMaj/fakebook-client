@@ -32,13 +32,13 @@ const PostForm = ({ updatePosts }: any) => {
   return (
     <form className="post-form">
       <div>
-        <img alt="user-profile-pic" src={currentUser.picture_url}></img>
+        <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
         <textarea
           value={input}
           onChange={(e: any) => {
             handleChange(e);
           }}
-          placeholder={`What's on your mind, ${currentUser.username}?`}
+          placeholder={`What's on your mind, ${currentUser?.username}?`}
         ></textarea>
       </div>
 
