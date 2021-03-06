@@ -11,20 +11,9 @@ import { userContext } from "../../../GlobalContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
-type Props = {
-  post: {
-    _id: string;
-    text: string;
-    User: { _id: string; picture_url: string; username: string; text: string };
-    likes: number;
-    comments: {
-      User: object;
-      text: string;
-      likes: number;
-      date: string;
-    };
-    date: string;
-  };
+
+
+type Props = PostType & {
   updatePosts: () => void;
 };
 
@@ -35,11 +24,10 @@ const Post: React.FC<Props> = ({ post, updatePosts }) => {
   const isOwnUserPost = post.User._id === currentUser?._id;
 
   const inputEl = useRef<HTMLInputElement>(null);
-  const onButtonClick = () => {
-    if (inputEl && inputEl.current) {
-      inputEl.current.focus();
-    }
+  const focusOnCommentInput = () => {
+    inputEl?.current?.focus();
   };
+
   const now = new Date();
   const postDate = new Date(post.date);
   const diffHrs = differenceInHours(now, postDate);
@@ -102,7 +90,7 @@ const Post: React.FC<Props> = ({ post, updatePosts }) => {
         post={post}
       />
       <PostButtons
-        onButtonClick={onButtonClick}
+        focusOnCommentInput={focusOnCommentInput}
         inputEl={inputEl}
         updatePosts={updatePosts}
         post={post}

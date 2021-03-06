@@ -1,8 +1,8 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React from "react";
+// import React from "react";
 import LoginPage from "./pages/Login/LoginPage";
-import { userContext, UserType } from "./GlobalContext";
+import { userContext } from "./GlobalContext";
 import FriendsPage from "./pages/Friends/FriendsPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 const TimelinePage = lazy(() => import("./pages/Timeline/TimelinePage"));

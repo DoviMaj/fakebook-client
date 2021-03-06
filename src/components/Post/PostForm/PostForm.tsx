@@ -2,7 +2,11 @@ import React, { useContext, useState } from "react";
 import "./PostForm.scss";
 import { userContext } from "../../../GlobalContext";
 
-const PostForm = ({ updatePosts }: any) => {
+type Props = {
+  updatePosts: () => void;
+};
+
+const PostForm: React.FC<Props> = ({ updatePosts }) => {
   const currentUser = useContext(userContext);
   const [input, setInput] = useState("");
   const handleForm = async (e: any) => {
