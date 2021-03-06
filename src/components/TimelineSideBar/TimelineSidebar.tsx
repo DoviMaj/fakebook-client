@@ -5,7 +5,7 @@ import "./TimelineSidebar.scss";
 import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SideBar = () => {
+const SideBar:React.FC = () => {
   const currentUser = useContext(userContext);
   return (
     <div className="side-bar">

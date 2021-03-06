@@ -5,19 +5,23 @@ declare global {
     username: string;
   };
   type PostType = {
-    post: {
+    _id: string;
+    text: string;
+    User: {
       _id: string;
+      picture_url: string;
+      username: string;
       text: string;
-      User: { _id: string; picture_url: string; username: string; text: string };
-      likes: number;
-      comments: {
-        User: object;
-        text: string;
-        likes: number;
-        date: string;
-      };
-      date: string;
     };
+    likes: number;
+    comments: Array<{
+      User: UserType;
+      text: string;
+      likes: number;
+      date: string;
+      _id: string;
+    }>;
+    date: string;
   };
 }
 

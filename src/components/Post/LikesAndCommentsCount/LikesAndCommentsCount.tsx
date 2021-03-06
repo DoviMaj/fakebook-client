@@ -1,7 +1,15 @@
 import React from "react";
 import "./LikesAndCommentsCount.scss";
 
-const LikesAndCommentsCount = ({ post, toggleCommentsVisible }: any) => {
+type Props = {
+  post: PostType;
+  toggleCommentsVisible: () => void;
+};
+
+const LikesAndCommentsCount: React.FC<Props> = ({
+  post,
+  toggleCommentsVisible,
+}) => {
   return (
     <div className="count-wrapper">
       {post.likes > 0 && (

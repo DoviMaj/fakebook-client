@@ -5,10 +5,19 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faCommentAlt } from "@fortawesome/free-regular-svg-icons";
 import { faShareSquare } from "@fortawesome/free-regular-svg-icons";
 
-const PostButtons = ({ post, updatePosts, onButtonClick }: any) => {
+type Props = {
+  post: PostType;
+  updatePosts: () => void;
+  focusOnCommentInput: () => void;
+};
+
+const PostButtons: React.FC<Props> = ({
+  post,
+  updatePosts,
+  focusOnCommentInput,
+}) => {
   const [hasUserLiked, setHasUserLiked] = useState(false);
   const handleLike = async () => {
-    console.log("hi");
     if (hasUserLiked) {
       try {
         await fetch(`http://localhost:5000/api/posts/${post._id}/likes`, {
@@ -37,6 +46,7 @@ const PostButtons = ({ post, updatePosts, onButtonClick }: any) => {
   return (
     <div className="post-likes">
       <div className="line"></div>
+
       <div className="buttons-wrapper">
         <div className="button like-button" onClick={handleLike}>
           <FontAwesomeIcon
@@ -45,7 +55,7 @@ const PostButtons = ({ post, updatePosts, onButtonClick }: any) => {
           />
           <p>Like</p>
         </div>
-        <div className="button" onClick={onButtonClick}>
+        <div className="button" onClick={focusOnCommentInput}>
           <FontAwesomeIcon className="icon" icon={faCommentAlt} />
           <p>Comment</p>
         </div>

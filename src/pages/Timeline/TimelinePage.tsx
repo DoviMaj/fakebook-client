@@ -5,8 +5,9 @@ import PostForm from "../../components/Post/PostForm/PostForm";
 import SideBar from "../../components/TimelineSideBar/TimelineSidebar";
 import "./TimelinePage.scss";
 
+type PostsType = Array<PostType>;
+
 const TimelinePage = () => {
-  type PostsType = [];
   const [posts, setPosts] = useState<PostsType | undefined>(undefined);
   useEffect(() => {
     document.title = "Fakebook";
@@ -33,12 +34,11 @@ const TimelinePage = () => {
         <SideBar />
         <div className="posts">
           <PostForm updatePosts={updatePosts} />
-          {posts &&
-            posts!.map((post: any) => {
-              return (
-                <Post key={post._id} updatePosts={updatePosts} post={post} />
-              );
-            })}
+          {posts?.map((post) => {
+            return (
+              <Post key={post._id} updatePosts={updatePosts} post={post} />
+            );
+          })}
         </div>
       </div>
     </>

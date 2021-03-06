@@ -2,20 +2,31 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./CommentList.scss";
 
-const CommentList = ({ comments, commentsVisible }: any) => {
+type Props = {
+  comments: Array<{
+    User: UserType;
+    text: string;
+    likes: number;
+    date: string;
+    _id: string
+  }>;
+  commentsVisible: boolean
+}
+
+const CommentList:React.FC<Props> = ({ comments, commentsVisible }) => {
   const [commentsDisplayAmount, setCommentsDisplayAmount] = useState(2);
   const [displayViewMore, setDisplayViewMore] = useState(true);
 
   useEffect(() => {
     commentsDisplayAmount > comments.length && setDisplayViewMore(false);
-  }, [commentsDisplayAmount]);
+  }, [commentsDisplayAmount, comments]);
 
   return (
     <div
       className="comments-list"
       style={{ display: !commentsVisible ? "none" : "flex" }}
     >
-      {comments.map((comment: any, index: any) => {
+      {comments.map((comment, index) => {
         if (index <= commentsDisplayAmount) {
           return (
             <div key={comment._id} className="comment-wrapper">
@@ -28,16 +39,15 @@ const CommentList = ({ comments, commentsVisible }: any) => {
               </div>
             </div>
           );
+        }else{
+          return null
         }
       })}
       {displayViewMore && (
         <p
           className="view-more"
           onClick={() => {
-            console.log("hi");
-
             setCommentsDisplayAmount(commentsDisplayAmount + 10);
-            console.log(commentsDisplayAmount);
           }}
         >
           View more comments

@@ -1,16 +1,20 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./CommentForm.scss";
 import { userContext } from "../../../GlobalContext";
 
-const CommentForm = ({ postId, updatePosts, inputEl }: any) => {
+type Props = {
+  postId: string;
+  updatePosts: () => void;
+  inputEl: any;
+};
+
+const CommentForm = ({ postId, updatePosts, inputEl }: Props) => {
   const currentUser = useContext(userContext);
   const [comment, setComment] = useState("");
 
   const handleForm = async (e: any) => {
     e.preventDefault();
     if (comment !== "") {
-      console.log(comment);
-
       const data = { text: comment };
       try {
         await fetch(`http://localhost:5000/api/posts/${postId}/comments`, {
