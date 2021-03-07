@@ -1,6 +1,9 @@
+@import "../FadeInAnimation.scss";
+
 .spinner {
   display: flex;
   justify-content: center;
+  animation: fadeIn ease 1s;
 
   svg {
     height: 57px;

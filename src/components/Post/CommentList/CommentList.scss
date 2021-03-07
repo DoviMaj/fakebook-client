@@ -1,8 +1,11 @@
+@import "../../FadeInAnimation.scss";
+
 .comments-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
+  animation: fadeIn ease 1s;
 
   .view-more {
     color: #696666;
@@ -19,6 +22,7 @@
   .comment-wrapper {
     display: flex;
     gap: 13px;
+    animation: fadeIn ease 1s;
   }
 
   .comment-text {
