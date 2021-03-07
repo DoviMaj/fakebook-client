@@ -6,6 +6,7 @@
   animation: fadeIn ease 1s;
 
   svg {
+    animation: SlideDown ease-in-out 0.8s;
     height: 57px;
     shape-rendering: auto;
     position: fixed;
@@ -13,5 +14,17 @@
     top: 220px;
     background: white;
     border-radius: 50%;
+  }
+}
+
+@keyframes SlideDown {
+  0% {
+    top: 200px;
+  }
+  50% {
+    top: 240px;
+  }
+  100% {
+    top: 220px;
   }
 }
