@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Spinner from "../../components/Spinner/Spinner";
 import "./LoginPage.scss";
 
 const LoginPage: React.FC = () => {
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     document.title = "Fakebook | Login";
   }, []);
@@ -11,14 +13,22 @@ const LoginPage: React.FC = () => {
         <div>
           <p className="logo">fakebook</p>
         </div>
-        <div></div>
-        <a className="link-button" href="http://localhost:5000/auth/facebook">
+        <a
+          className="link-button"
+          onClick={() => setLoading(true)}
+          href="http://localhost:5000/auth/facebook"
+        >
           Sign-in with Facebook
         </a>
-        <a className="link-button" href="http://localhost:5000/auth/google">
+        <a
+          className="link-button"
+          onClick={() => setLoading(true)}
+          href="http://localhost:5000/auth/google"
+        >
           Sign-in with Google
         </a>
       </div>
+      {loading && <Spinner />}
     </div>
   );
 };
