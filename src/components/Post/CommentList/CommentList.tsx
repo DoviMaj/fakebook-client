@@ -8,12 +8,12 @@ type Props = {
     text: string;
     likes: number;
     date: string;
-    _id: string
+    _id: string;
   }>;
-  commentsVisible: boolean
-}
+  commentsVisible: boolean;
+};
 
-const CommentList:React.FC<Props> = ({ comments, commentsVisible }) => {
+const CommentList: React.FC<Props> = ({ comments, commentsVisible }) => {
   const [commentsDisplayAmount, setCommentsDisplayAmount] = useState(2);
   const [displayViewMore, setDisplayViewMore] = useState(true);
 
@@ -39,8 +39,8 @@ const CommentList:React.FC<Props> = ({ comments, commentsVisible }) => {
               </div>
             </div>
           );
-        }else{
-          return null
+        } else {
+          return null;
         }
       })}
       {displayViewMore && (
