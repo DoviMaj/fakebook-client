@@ -4,6 +4,7 @@ import LoginPage from "./pages/Login/LoginPage";
 import { userContext } from "./GlobalContext";
 import FriendsPage from "./pages/Friends/FriendsPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
+import Spinner from "./components/Spinner/Spinner";
 const TimelinePage = lazy(() => import("./pages/Timeline/TimelinePage"));
 
 const App: React.FC = () => {
@@ -34,7 +35,7 @@ const App: React.FC = () => {
     setLoading(false);
   }
 
-  const renderLoader = () => <p>Loading...</p>;
+  const renderLoader = () => <Spinner />;
 
   return (
     <>
