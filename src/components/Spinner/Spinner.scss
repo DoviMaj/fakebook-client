@@ -1,8 +1,14 @@
 .spinner {
-  height: 80px;
-  shape-rendering: auto;
-  position: absolute;
-  z-index: 100;
-  margin: auto;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    height: 57px;
+    shape-rendering: auto;
+    position: fixed;
+    z-index: 100;
+    top: 220px;
+    background: white;
+    border-radius: 50%;
+  }
 }
