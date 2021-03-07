@@ -8,7 +8,7 @@ type Props = {
   inputEl: any;
 };
 
-const CommentForm = ({ postId, updatePosts, inputEl }: Props) => {
+const CommentForm: React.FC<Props> = ({ postId, updatePosts, inputEl }) => {
   const currentUser = useContext(userContext);
   const [comment, setComment] = useState("");
 

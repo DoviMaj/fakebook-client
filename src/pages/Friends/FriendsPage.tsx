@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { userContext } from "../../GlobalContext";
 import "./FriendsPage.scss";
 
-const FriendsPage = () => {
+const FriendsPage: React.FC = () => {
   const currentUser = useContext(userContext);
   const [notFriends, setNotFriends] = useState([] as any);
 

@@ -3,7 +3,7 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { userContext } from "../../GlobalContext";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const currentUser = useContext(userContext);
   return (
     <nav className="top-nav">

@@ -7,7 +7,7 @@ import "./TimelinePage.scss";
 
 type PostsType = Array<PostType>;
 
-const TimelinePage = () => {
+const TimelinePage: React.FC = () => {
   const [posts, setPosts] = useState<PostsType | undefined>(undefined);
   useEffect(() => {
     document.title = "Fakebook";

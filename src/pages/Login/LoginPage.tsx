@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./LoginPage.scss";
 
-function LoginPage() {
+const LoginPage: React.FC = () => {
   useEffect(() => {
     document.title = "Fakebook | Login";
   }, []);
@@ -21,6 +21,6 @@ function LoginPage() {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
