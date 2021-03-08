@@ -1,5 +1,10 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import LoginPage from "./pages/Login/LoginPage";
 import { userContext } from "./GlobalContext";
 import FriendsPage from "./pages/Friends/FriendsPage";
@@ -35,6 +40,17 @@ const App: React.FC = () => {
     setLoading(false);
   }
 
+  const fetchUser = async () => {
+    const req = await fetch("http://localhost:5000/api/me", {
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    setUser(await req.json());
+  };
+
   const renderLoader = () => <Spinner />;
 
   return (
@@ -54,9 +70,13 @@ const App: React.FC = () => {
               )}
             </Route>
             <Route path="/friends">
-              <userContext.Provider value={user}>
-                <FriendsPage />
-              </userContext.Provider>
+              {isAuth ? (
+                <userContext.Provider value={user}>
+                  <FriendsPage fetchUser={fetchUser} />
+                </userContext.Provider>
+              ) : (
+                <Redirect to="/" />
+              )}
             </Route>
             <Route>
               <userContext.Provider value={user}>

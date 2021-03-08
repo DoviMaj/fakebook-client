@@ -2,6 +2,9 @@ type UserType = {
   _id: string;
   picture_url: string;
   username: string;
+  friends: Array<UserType>;
+  friendsRequestsSent: Array<UserType>;
+  friendsRequestsRecieved: Array<UserType>;
 };
 
 type PostType = {
