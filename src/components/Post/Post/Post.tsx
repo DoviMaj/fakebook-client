@@ -65,7 +65,7 @@ const Post: React.FC<Props> = ({ post, updatePosts }) => {
     <div
       className="post"
       onMouseLeave={() => setIsHover(false)}
-      onMouseEnter={() => setIsHover(true)}
+      onMouseOver={() => setIsHover(true)}
     >
       {isOwnUserPost && isHover && (
         <FontAwesomeIcon
