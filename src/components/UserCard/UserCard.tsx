@@ -8,7 +8,7 @@ type Props = {
   recieved?: boolean;
   friend?: boolean;
   getUsers: () => void;
-  fetchUser: () => void;
+  updateCurrentUser: () => void;
 };
 
 const UserCard: React.FC<Props> = ({
@@ -17,7 +17,7 @@ const UserCard: React.FC<Props> = ({
   recieved,
   friend,
   getUsers,
-  fetchUser,
+  updateCurrentUser,
 }) => {
   const addFriend = async (e: any) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const UserCard: React.FC<Props> = ({
         credentials: "include",
         method: "post",
       });
-      fetchUser();
+      updateCurrentUser();
       getUsers();
     } catch (err) {
       console.log(err);
@@ -48,7 +48,7 @@ const UserCard: React.FC<Props> = ({
         credentials: "include",
         method: "post",
       });
-      fetchUser();
+      updateCurrentUser();
     } catch (err) {
       console.log(err);
     }
@@ -65,7 +65,8 @@ const UserCard: React.FC<Props> = ({
         credentials: "include",
         method: "post",
       });
-      fetchUser();
+      getUsers();
+      updateCurrentUser();
     } catch (err) {
       console.log(err);
     }
@@ -83,7 +84,7 @@ const UserCard: React.FC<Props> = ({
         method: "post",
       });
       getUsers();
-      fetchUser();
+      updateCurrentUser();
     } catch (err) {
       console.log(err);
     }

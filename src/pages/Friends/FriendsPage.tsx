@@ -6,10 +6,10 @@ import { userContext } from "../../GlobalContext";
 import "./FriendsPage.scss";
 
 type Props = {
-  fetchUser: () => void;
+  updateCurrentUser: () => void;
 };
 
-const FriendsPage: React.FC<Props> = ({ fetchUser }) => {
+const FriendsPage: React.FC<Props> = ({ updateCurrentUser }) => {
   const currentUser = useContext(userContext);
   const [notFriends, setNotFriends] = useState([] as Array<UserType>);
   const [loading, setLoading] = useState(false);
@@ -45,7 +45,7 @@ const FriendsPage: React.FC<Props> = ({ fetchUser }) => {
                 <strong className="section">Friends</strong>
                 {currentUser!.friends.map((friend) => (
                   <UserCard
-                    fetchUser={fetchUser}
+                    updateCurrentUser={updateCurrentUser}
                     getUsers={getUsers}
                     friend
                     key={friend._id}
@@ -60,7 +60,7 @@ const FriendsPage: React.FC<Props> = ({ fetchUser }) => {
                 <strong className="section">Recieved Requests</strong>
                 {currentUser!.friendsRequestsRecieved.map((friend) => (
                   <UserCard
-                    fetchUser={fetchUser}
+                    updateCurrentUser={updateCurrentUser}
                     getUsers={getUsers}
                     recieved
                     key={friend._id}
@@ -75,7 +75,7 @@ const FriendsPage: React.FC<Props> = ({ fetchUser }) => {
                 <strong className="section">Sent Requests</strong>
                 {currentUser!.friendsRequestsSent.map((friend) => (
                   <UserCard
-                    fetchUser={fetchUser}
+                    updateCurrentUser={updateCurrentUser}
                     getUsers={getUsers}
                     sent
                     key={friend._id}
@@ -90,7 +90,7 @@ const FriendsPage: React.FC<Props> = ({ fetchUser }) => {
                 <strong className="section">People You May Know</strong>
                 {notFriends.map((friend) => (
                   <UserCard
-                    fetchUser={fetchUser}
+                    updateCurrentUser={updateCurrentUser}
                     getUsers={getUsers}
                     key={friend._id}
                     user={friend}

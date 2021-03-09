@@ -40,7 +40,7 @@ const App: React.FC = () => {
     setLoading(false);
   }
 
-  const fetchUser = async () => {
+  const updateCurrentUser = async () => {
     const req = await fetch("http://localhost:5000/api/me", {
       credentials: "include",
       headers: {
@@ -72,7 +72,7 @@ const App: React.FC = () => {
             <Route path="/friends">
               {isAuth ? (
                 <userContext.Provider value={user}>
-                  <FriendsPage fetchUser={fetchUser} />
+                  <FriendsPage updateCurrentUser={updateCurrentUser} />
                 </userContext.Provider>
               ) : (
                 <Redirect to="/" />
