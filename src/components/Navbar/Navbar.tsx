@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       <div className="nav-right">
-        <Link to={`/profile`} className="user-profile">
+        <Link to={`/${currentUser!._id}`} className="user-profile">
           <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
           <p>{currentUser?.username}</p>
         </Link>

@@ -78,7 +78,7 @@ const App: React.FC = () => {
                 <Redirect to="/" />
               )}
             </Route>
-            <Route>
+            <Route path="/:id">
               <userContext.Provider value={user}>
                 <ProfilePage />
               </userContext.Provider>

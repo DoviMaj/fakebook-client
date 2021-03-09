@@ -5,11 +5,11 @@ import "./TimelineSidebar.scss";
 import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SideBar:React.FC = () => {
+const SideBar: React.FC = () => {
   const currentUser = useContext(userContext);
   return (
     <div className="side-bar">
-      <Link to="/profile">
+      <Link to={`/${currentUser?._id}`}>
         <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
         <p>{currentUser?.username}</p>
       </Link>

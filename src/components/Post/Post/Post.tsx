@@ -78,7 +78,7 @@ const Post: React.FC<Props> = ({ post, updatePosts }) => {
       <div className="post-profile">
         <img alt="user-profile-pic" src={post.User.picture_url}></img>
         <div>
-          <Link to="/profile">{post.User.username}</Link>
+          <Link to={`/${post.User._id}`}>{post.User.username}</Link>
           <p>{displayDate}</p>
         </div>
       </div>
