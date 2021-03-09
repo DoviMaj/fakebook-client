@@ -14,8 +14,10 @@ type Props = {
 };
 
 const CommentList: React.FC<Props> = ({ comments, commentsVisible }) => {
-  const [commentsDisplayAmount, setCommentsDisplayAmount] = useState(2);
-  const [displayViewMore, setDisplayViewMore] = useState(true);
+  const [commentsDisplayAmount, setCommentsDisplayAmount] = useState(1);
+  const [displayViewMore, setDisplayViewMore] = useState(
+    commentsDisplayAmount < comments.length - 1
+  );
 
   useEffect(() => {
     commentsDisplayAmount > comments.length && setDisplayViewMore(false);
