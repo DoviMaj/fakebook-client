@@ -1,5 +1,4 @@
-import { request } from "node:https";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import Navbar from "../../components/Navbar/Navbar";
 import Post from "../../components/Post/Post/Post";
@@ -45,8 +44,29 @@ const ProfilePage: React.FC = () => {
     setPosts(res.posts);
     setLoading(false);
   }
+  const [files, setFiles] = useState<FileList | null>(null);
+  const inputEl = useRef<HTMLInputElement>(null);
 
-  const imgUpload = () => {};
+  async function uploadImg(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const formData = new FormData();
+    if (files) {
+      console.log(files[0]);
+      formData.append("myFile", files[0]);
+      try {
+        await fetch("http://localhost:5000/api/img", {
+          method: "POST",
+          body: formData,
+          credentials: "include",
+        });
+        setFiles(null);
+        inputEl!.current!.value = "null";
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
   return (
     <>
       <Navbar />
@@ -70,11 +90,20 @@ const ProfilePage: React.FC = () => {
               <strong>{profileUser?.username}</strong>
             </div>
           </div>{" "}
-          <form encType="multipart/form-data">
-            <input type="file" name="file"></input>
-            <input onClick={imgUpload} type="button">
-              Submit
-            </input>
+          <form onSubmit={uploadImg}>
+            {files && (
+              <img alt="upload" src={files && URL.createObjectURL(files[0])} />
+            )}
+            <input
+              type="file"
+              ref={inputEl}
+              onChange={(e) => {
+                setFiles(e.target.files);
+              }}
+              onClick={(e: any) => (e.target.value = null)}
+              name="file"
+            ></input>
+            <input type="submit"></input>
           </form>
           <div className="posts">
             {posts &&
