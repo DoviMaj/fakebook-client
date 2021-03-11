@@ -18,6 +18,10 @@ const ProfileSection = ({
       currentUser!._id === profileUser!._id &&
       setIsCurrentUser(true);
   }, [profileUser]);
+
+  const toggleShowModal = () => {
+    setShowEditModal(!showEditModal);
+  };
   return (
     <div className="profile-section">
       <img
@@ -28,7 +32,8 @@ const ProfileSection = ({
       <div className="pic-and-name">
         {isCurrentUser && (
           <FontAwesomeIcon
-            onClick={() => setShowEditModal(!showEditModal)}
+            className="edit-icon"
+            onClick={() => toggleShowModal()}
             icon={faEdit}
           />
         )}
@@ -38,7 +43,7 @@ const ProfileSection = ({
           src={profileUser?.picture_url}
         ></img>
         <strong>{profileUser?.username}</strong>
-        {showEditModal && <EditPicModal />}
+        {showEditModal && <EditPicModal toggleShowModal={toggleShowModal} />}
       </div>
     </div>
   );
