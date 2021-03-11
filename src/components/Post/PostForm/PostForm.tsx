@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./PostForm.scss";
 import { userContext } from "../../../GlobalContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose } from "@fortawesome/free-regular-svg-icons";
+import PostModal from "../PostModal/PostModal";
 
 type Props = {
   updatePosts: () => void;
@@ -26,8 +25,9 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
           },
           body: JSON.stringify(data),
         });
-        setInput("");
         updatePosts();
+        if (showModal) toggleShowModal();
+        setInput("");
       } catch (err) {
         console.error(err);
       }
@@ -64,37 +64,13 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
         </button>
       </form>
       {showModal && (
-        <div className="modal-wrapper">
-          <div className="post-modal">
-            <div className="header">
-              {" "}
-              <FontAwesomeIcon
-                className="close-icon"
-                onClick={() => toggleShowModal()}
-                icon={faWindowClose}
-              />
-              <h2>Create Post</h2>
-            </div>
-
-            <textarea
-              value={input}
-              onChange={(e: any) => {
-                handleChange(e);
-              }}
-              placeholder={`What's on your mind, ${currentUser?.username}?`}
-            ></textarea>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                handleForm(e);
-              }}
-              className="link-button"
-            >
-              Post
-            </button>
-          </div>
-        </div>
+        <PostModal
+          toggleShowModal={toggleShowModal}
+          currentUser={currentUser}
+          input={input}
+          handleChange={handleChange}
+          handleForm={handleForm}
+        />
       )}
     </div>
   );
