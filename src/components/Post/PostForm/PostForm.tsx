@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import "./PostForm.scss";
 import { userContext } from "../../../GlobalContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWindowClose } from "@fortawesome/free-regular-svg-icons";
 
 type Props = {
   updatePosts: () => void;
@@ -9,6 +11,7 @@ type Props = {
 const PostForm: React.FC<Props> = ({ updatePosts }) => {
   const currentUser = useContext(userContext);
   const [input, setInput] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const handleForm = async (e: any) => {
     e.preventDefault();
     if (input !== "") {
@@ -33,30 +36,67 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
   const handleChange = (e: any) => {
     setInput(e.target.value);
   };
+  const toggleShowModal = () => {
+    setShowModal(!showModal);
+  };
   return (
-    <form className="post-form">
-      <div>
-        <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
-        <textarea
-          value={input}
-          onChange={(e: any) => {
-            handleChange(e);
+    <div>
+      <form className="post-form">
+        <div>
+          <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
+          <textarea
+            readOnly
+            className="input"
+            value={input}
+            onClick={toggleShowModal}
+            placeholder={`What's on your mind, ${currentUser?.username}?`}
+          ></textarea>
+        </div>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            handleForm(e);
           }}
-          placeholder={`What's on your mind, ${currentUser?.username}?`}
-        ></textarea>
-      </div>
+          className="link-button"
+        >
+          Post
+        </button>
+      </form>
+      {showModal && (
+        <div className="modal-wrapper">
+          <div className="post-modal">
+            <div className="header">
+              {" "}
+              <FontAwesomeIcon
+                className="close-icon"
+                onClick={() => toggleShowModal()}
+                icon={faWindowClose}
+              />
+              <h2>Create Post</h2>
+            </div>
 
-      <button
-        type="button"
-        onClick={(e) => {
-          e.preventDefault();
-          handleForm(e);
-        }}
-        className="link-button"
-      >
-        Post
-      </button>
-    </form>
+            <textarea
+              value={input}
+              onChange={(e: any) => {
+                handleChange(e);
+              }}
+              placeholder={`What's on your mind, ${currentUser?.username}?`}
+            ></textarea>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                handleForm(e);
+              }}
+              className="link-button"
+            >
+              Post
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
