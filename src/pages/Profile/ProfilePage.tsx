@@ -45,29 +45,7 @@ const ProfilePage: React.FC = () => {
     setPosts(res.posts);
     setLoading(false);
   }
-  const [files, setFiles] = useState<FileList | null>(null);
-  const inputEl = useRef<HTMLInputElement>(null);
 
-  async function uploadImg(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const formData = new FormData();
-    if (files) {
-      console.log(files[0]);
-      formData.append("myFile", files[0]);
-      try {
-        await fetch("http://localhost:5000/api/img", {
-          method: "POST",
-          body: formData,
-          credentials: "include",
-        });
-        setFiles(null);
-        inputEl!.current!.value = "null";
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  }
   return (
     <>
       <Navbar />
@@ -77,21 +55,7 @@ const ProfilePage: React.FC = () => {
       ) : (
         <div className="profile-page">
           <ProfileSection profileUser={profileUser} />
-          <form onSubmit={uploadImg}>
-            {files && (
-              <img alt="upload" src={files && URL.createObjectURL(files[0])} />
-            )}
-            <input
-              type="file"
-              ref={inputEl}
-              onChange={(e) => {
-                setFiles(e.target.files);
-              }}
-              onClick={(e: any) => (e.target.value = null)}
-              name="file"
-            ></input>
-            <input type="submit"></input>
-          </form>
+
           <div className="posts">
             {posts &&
               posts.map((post) => {

@@ -1,0 +1,27 @@
+.edit-modal-wrapper {
+  position: relative;
+  z-index: 2;
+  .edit-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: -228px;
+    left: 38px;
+    .image {
+      width: 200px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .close-icon {
+      cursor: pointer;
+      font-size: larger;
+      path {
+        fill: blue;
+      }
+    }
+  }
+}
