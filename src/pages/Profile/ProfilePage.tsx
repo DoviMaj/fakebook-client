@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Post from "../../components/Post/Post/Post";
 import Spinner from "../../components/Spinner/Spinner";
 import { userContext } from "../../GlobalContext";
+import ProfileSection from "../../components/ProfileSection/ProfileSection";
 import "./ProfilePage.scss";
 
 const ProfilePage: React.FC = () => {
@@ -75,21 +76,7 @@ const ProfilePage: React.FC = () => {
         <Spinner />
       ) : (
         <div className="profile-page">
-          <div className="profile-section">
-            <img
-              className="cover-pic"
-              alt="cover-pic"
-              src="https://source.unsplash.com/1600x900"
-            ></img>
-            <div className="pic-and-name">
-              <img
-                className="user-pic"
-                alt="user-pic"
-                src={profileUser?.picture_url}
-              ></img>
-              <strong>{profileUser?.username}</strong>
-            </div>
-          </div>{" "}
+          <ProfileSection profileUser={profileUser} />
           <form onSubmit={uploadImg}>
             {files && (
               <img alt="upload" src={files && URL.createObjectURL(files[0])} />
