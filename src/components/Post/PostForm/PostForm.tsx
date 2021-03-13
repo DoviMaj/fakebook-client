@@ -57,6 +57,7 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
         console.log(await req.json());
 
         if (showModal) toggleShowModal();
+        setFiles(null);
         setInput("");
       } catch (err) {
         console.error(err);
