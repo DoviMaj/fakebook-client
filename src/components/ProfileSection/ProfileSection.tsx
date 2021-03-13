@@ -17,7 +17,7 @@ const ProfileSection = ({
     profileUser &&
       currentUser!._id === profileUser!._id &&
       setIsCurrentUser(true);
-  }, [profileUser]);
+  }, [profileUser, currentUser]);
 
   const toggleShowModal = () => {
     setShowEditModal(!showEditModal);
