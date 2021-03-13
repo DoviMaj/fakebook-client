@@ -76,13 +76,21 @@ const Post: React.FC<Props> = ({ post, updatePosts }) => {
       )}
 
       <div className="post-profile">
-        <img alt="user-profile-pic" src={post.User.picture_url}></img>
+        <img
+          className="user-profile-pic"
+          alt="user-profile-pic"
+          src={post.User.picture_url}
+        ></img>
         <div>
           <Link to={`/${post.User._id}`}>{post.User.username}</Link>
           <p>{displayDate}</p>
         </div>
       </div>
+
       <p>{post.text}</p>
+      {post.image_url && (
+        <img alt="post-img" className="post-image" src={post.image_url}></img>
+      )}
 
       <LikesAndCommentsCount
         toggleCommentsVisible={toggleCommentsVisible}

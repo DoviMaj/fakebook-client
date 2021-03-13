@@ -11,21 +11,51 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
   const currentUser = useContext(userContext);
   const [input, setInput] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [files, setFiles] = useState<FileList | null>(null);
+  const [errMsg, setErrMsg] = useState("");
   const handleForm = async (e: any) => {
     e.preventDefault();
-    if (input !== "") {
-      const data = { text: input };
+    if (input !== "" || files) {
+      const formData = new FormData();
+      if (files && files[0]) {
+        const Extension = files[0].name
+          .substring(files[0].name.lastIndexOf(".") + 1)
+          .toLowerCase();
+
+        //The file uploaded is an image
+        if (
+          Extension === "gif" ||
+          Extension === "png" ||
+          Extension === "bmp" ||
+          Extension === "jpeg" ||
+          Extension === "jpg"
+        ) {
+          formData.append("myFile", files[0]);
+          console.log(formData.get("myFile"), "hi from file");
+        } else {
+          setErrMsg("file uploaded isnt an image");
+        }
+      }
+      if (input !== "") {
+        console.log(input);
+
+        formData.append("text", input);
+      }
+      console.log(
+        input !== "" || files,
+        formData.get("myFile"),
+        formData.get("text")
+      );
+
       try {
-        await fetch("http://localhost:5000/api/posts", {
-          method: "post",
+        const req = await fetch("http://localhost:5000/api/posts", {
+          method: "POST",
+          body: formData,
           credentials: "include",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
         });
         updatePosts();
+        console.log(await req.json());
+
         if (showModal) toggleShowModal();
         setInput("");
       } catch (err) {
@@ -36,9 +66,10 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
   const handleChange = (e: any) => {
     setInput(e.target.value);
   };
-  const toggleShowModal = () => {
+  function toggleShowModal() {
     setShowModal(!showModal);
-  };
+  }
+
   return (
     <div>
       <form className="post-form">
@@ -65,6 +96,9 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
       </form>
       {showModal && (
         <PostModal
+          errMsg={errMsg}
+          setFiles={setFiles}
+          files={files}
           toggleShowModal={toggleShowModal}
           currentUser={currentUser}
           input={input}

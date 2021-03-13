@@ -9,7 +9,8 @@ type UserType = {
 
 type PostType = {
   _id: string;
-  text: string;
+  text?: string;
+  image_url?: string;
   User: {
     _id: string;
     picture_url: string;
