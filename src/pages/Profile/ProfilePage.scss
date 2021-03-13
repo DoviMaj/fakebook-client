@@ -6,7 +6,8 @@
   top: -200px;
 
   .posts {
-    max-width: 450px;
+    width: 450px;
+    max-width: -webkit-fill-available;
     margin: auto;
     position: relative;
     top: -100px;
@@ -58,6 +59,16 @@
     strong {
       margin: auto;
       font-size: 2em;
+    }
+  }
+  @media (max-width: 1020px) {
+    top: 0;
+  }
+  @media (max-width: 700px) {
+    .profile-section {
+      .cover-pic {
+        width: 90%;
+      }
     }
   }
 }
