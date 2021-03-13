@@ -43,36 +43,36 @@ const PostModal: React.FC<Props> = ({
           }}
           placeholder={`What's on your mind, ${currentUser?.username}?`}
         ></textarea>
-        <div>
-          {files && (
-            <img
-              alt="upload"
-              className="image"
-              src={files && URL.createObjectURL(files[0])}
-            />
-          )}
+
+        {files && (
+          <img
+            alt="upload"
+            className="image"
+            src={files && URL.createObjectURL(files[0])}
+          />
+        )}
+
+        <p>{errMsg}</p>
+
+        <div className="buttons">
           <input
-            className="link-button"
-            style={{ width: "initial" }}
             type="file"
             onChange={(e) => {
               setFiles(e.target.files);
             }}
             name="file"
-          ></input>
-          <p>{errMsg}</p>
+          ></input>{" "}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              handleForm(e);
+            }}
+            className="link-button"
+          >
+            Post
+          </button>
         </div>
-
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            handleForm(e);
-          }}
-          className="link-button"
-        >
-          Post
-        </button>
       </div>
     </div>
   );
