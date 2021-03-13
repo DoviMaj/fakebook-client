@@ -3,6 +3,7 @@
   grid-template-areas: "like comment";
   justify-content: space-between;
   color: #696666;
+  padding: 0 15px;
 
   .like-counter {
     grid-area: like;

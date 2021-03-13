@@ -86,8 +86,8 @@ const Post: React.FC<Props> = ({ post, updatePosts }) => {
           <p>{displayDate}</p>
         </div>
       </div>
+      {post.text && <p className="post-text">{post.text}</p>}
 
-      <p>{post.text}</p>
       {post.image_url && (
         <img alt="post-img" className="post-image" src={post.image_url}></img>
       )}

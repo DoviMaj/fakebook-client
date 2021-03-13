@@ -2,7 +2,6 @@
 
 .post {
   position: relative;
-  padding: 15px;
   margin: 10px 0;
   border-radius: 15px;
   background: white;
@@ -13,6 +12,7 @@
   .delete {
     position: absolute;
     right: 15px;
+    top: 10px;
     cursor: pointer;
     transform: scale(1.2);
     color: rgba(0, 0, 0, 0.548);
@@ -28,6 +28,10 @@
     width: 100%;
   }
 
+  .post-text {
+    padding: 15px 15px 0;
+  }
+
   a {
     font-weight: 500;
   }
@@ -39,6 +43,7 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    padding: 15px;
 
     p {
       margin: 0;
