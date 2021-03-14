@@ -101,7 +101,12 @@ const Post: React.FC<Props> = ({ post, updatePosts }) => {
         updatePosts={updatePosts}
         post={post}
       />
-      <CommentList commentsVisible={commentsVisible} comments={post.comments} />
+      {post.comments.length > 0 && (
+        <CommentList
+          commentsVisible={commentsVisible}
+          comments={post.comments}
+        />
+      )}
       <CommentForm
         inputEl={inputEl}
         updatePosts={updatePosts}
