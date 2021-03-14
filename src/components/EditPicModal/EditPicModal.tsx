@@ -60,7 +60,7 @@ const EditPicModal = ({ toggleShowModal }: { toggleShowModal: () => void }) => {
             />
           )}
           <input
-            className="link-button"
+            className="primary-button"
             style={{ width: "initial" }}
             type="file"
             ref={inputEl}
@@ -71,7 +71,7 @@ const EditPicModal = ({ toggleShowModal }: { toggleShowModal: () => void }) => {
             name="file"
           ></input>
           <input
-            className="link-button"
+            className="primary-button"
             style={{ width: "initial" }}
             type="submit"
           ></input>

@@ -68,7 +68,7 @@ const PostModal: React.FC<Props> = ({
               e.preventDefault();
               handleForm(e);
             }}
-            className="link-button"
+            className="primary-button"
           >
             Post
           </button>

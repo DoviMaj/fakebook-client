@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
 
         <a
           style={{ width: "initial" }}
-          className="link-button"
+          className="primary-button"
           href="http://localhost:5000/auth/logout"
         >
           Logout

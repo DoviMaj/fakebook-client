@@ -14,14 +14,14 @@ const LoginPage: React.FC = () => {
           <p className="logo">fakebook</p>
         </div>
         <a
-          className="link-button"
+          className="primary-button"
           onClick={() => setLoading(true)}
           href="http://localhost:5000/auth/facebook"
         >
           Sign-in with Facebook
         </a>
         <a
-          className="link-button"
+          className="primary-button"
           onClick={() => setLoading(true)}
           href="http://localhost:5000/auth/google"
         >

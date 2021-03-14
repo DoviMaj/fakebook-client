@@ -27,7 +27,7 @@
   margin: 0;
 }
 
-.link-button {
+.primary-button {
   display: flex;
   justify-content: center;
   border: none;
@@ -43,6 +43,6 @@
   cursor: pointer;
 }
 
-.link-button:hover {
+.primary-button:hover {
   background: rgb(111, 32, 185);
 }

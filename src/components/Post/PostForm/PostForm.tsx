@@ -90,7 +90,7 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
             e.preventDefault();
             handleForm(e);
           }}
-          className="link-button"
+          className="primary-button"
         >
           Post
         </button>
