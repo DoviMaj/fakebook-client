@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose } from "@fortawesome/free-regular-svg-icons";
+import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import "./PostModal.scss";
 
 type Props = {
@@ -31,7 +31,7 @@ const PostModal: React.FC<Props> = ({
           <FontAwesomeIcon
             className="close-icon"
             onClick={() => toggleShowModal()}
-            icon={faWindowClose}
+            icon={faTimesCircle}
           />
           <h2>Create Post</h2>
         </div>
