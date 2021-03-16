@@ -48,7 +48,7 @@ const PostButtons: React.FC<Props> = ({
       <div className="line"></div>
 
       <div className="buttons-wrapper">
-        <div className="button like-button" onClick={handleLike}>
+        <div className="button" onClick={handleLike}>
           <FontAwesomeIcon
             className={`icon ${hasUserLiked && "liked"}`}
             icon={faThumbsUp}
