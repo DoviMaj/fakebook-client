@@ -72,7 +72,7 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
   }
 
   return (
-    <div>
+    <>
       <form className="post-form">
         <div>
           <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
@@ -107,7 +107,7 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
           handleForm={handleForm}
         />
       )}
-    </div>
+    </>
   );
 };
 
