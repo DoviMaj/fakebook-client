@@ -10,8 +10,8 @@ import { userContext } from "./GlobalContext";
 import FriendsPage from "./pages/Friends/FriendsPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import Spinner from "./components/Spinner/Spinner";
-const TimelinePage = lazy(() => import("./pages/Timeline/TimelinePage"));
 
+const TimelinePage = lazy(() => import("./pages/Timeline/TimelinePage"));
 const App: React.FC = () => {
   const [isAuth, setIsAuth] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -56,35 +56,33 @@ const App: React.FC = () => {
   return (
     <>
       {!loading && (
-        <Router basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route exact path="/">
-              {!isAuth ? (
-                <LoginPage />
-              ) : (
-                <Suspense fallback={renderLoader()}>
-                  <userContext.Provider value={user as any}>
-                    <TimelinePage />
-                  </userContext.Provider>
-                </Suspense>
-              )}
-            </Route>
-            <Route path="/friends">
-              {isAuth ? (
-                <userContext.Provider value={user}>
-                  <FriendsPage updateCurrentUser={updateCurrentUser} />
-                </userContext.Provider>
-              ) : (
-                <Redirect to="/" />
-              )}
-            </Route>
-            <Route path="/:id">
-              <userContext.Provider value={user}>
-                <ProfilePage />
-              </userContext.Provider>
-            </Route>
-          </Switch>
-        </Router>
+        <>
+          <userContext.Provider value={user}>
+            <Router basename={process.env.PUBLIC_URL}>
+              <Switch>
+                <Route exact path="/">
+                  {!isAuth ? (
+                    <LoginPage />
+                  ) : (
+                    <Suspense fallback={renderLoader()}>
+                      <TimelinePage />
+                    </Suspense>
+                  )}
+                </Route>
+                <Route path="/friends">
+                  {isAuth ? (
+                    <FriendsPage updateCurrentUser={updateCurrentUser} />
+                  ) : (
+                    <Redirect to="/" />
+                  )}
+                </Route>
+                <Route path="/:id">
+                  {isAuth ? <ProfilePage /> : <Redirect to="/" />}
+                </Route>
+              </Switch>
+            </Router>{" "}
+          </userContext.Provider>
+        </>
       )}
     </>
   );
