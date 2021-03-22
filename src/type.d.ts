@@ -2,9 +2,9 @@ type UserType = {
   _id: string;
   picture_url: string;
   username: string;
-  friends: Array<UserType>;
-  friendsRequestsSent: Array<UserType>;
-  friendsRequestsRecieved: Array<UserType>;
+  friends: UserType[];
+  friendsRequestsSent: UserType[];
+  friendsRequestsRecieved: UserType[];
 };
 
 type PostType = {
@@ -18,12 +18,17 @@ type PostType = {
     text: string;
   };
   likes: number;
-  comments: Array<{
+  comments: {
     User: UserType;
     text: string;
     likes: number;
     date: string;
     _id: string;
-  }>;
+  }[];
   date: string;
 };
+
+type ChatType = {
+  from: string;
+  msg: string;
+}[];
