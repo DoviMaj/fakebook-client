@@ -29,3 +29,32 @@ ul {
 li {
   list-style: none;
 }
+
+.primary-button {
+  display: flex;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  outline: inherit;
+  padding: 15px 20px;
+  width: 100%;
+  background: blueviolet;
+  color: white;
+  font-size: large;
+  font-weight: bolder;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background: rgb(111, 32, 185);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
