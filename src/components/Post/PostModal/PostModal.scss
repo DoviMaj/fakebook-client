@@ -27,7 +27,8 @@
     width: -webkit-fill-available;
     max-width: 520px;
     height: 400px;
-    overflow: scroll;
+    overflow: auto;
+    transition: transform ease-in 0.2s, opacity ease-in 0.1s;
 
     input[type="file"]::-webkit-file-upload-button {
       visibility: hidden;

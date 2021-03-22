@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "../../components/Spinner/Spinner";
-import "./LoginPage.scss";
+import styles from "./LoginPage.module.scss";
 
 const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -8,10 +8,10 @@ const LoginPage: React.FC = () => {
     document.title = "Fakebook | Login";
   }, []);
   return (
-    <div className="login-wrapper">
-      <div className="login-form">
+    <div className={styles.login_wrapper}>
+      <div className={styles.login_form}>
         <div>
-          <p className="logo">fakebook</p>
+          <p className={styles.logo}>fakebook</p>
         </div>
         <a
           className="primary-button"

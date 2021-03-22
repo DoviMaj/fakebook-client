@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
-import "./Navbar.scss";
+import styles from "./Navbar.module.scss";
 import { Link } from "react-router-dom";
 import { userContext } from "../../GlobalContext";
 
 const Navbar: React.FC = () => {
   const currentUser = useContext(userContext);
   return (
-    <nav className="top-nav">
+    <nav className={styles.top_nav}>
       <div>
-        <Link to="/" className="logo">
+        <Link to="/" className={styles.logo}>
           <svg
             viewBox="0 0 36 36"
             className="a8c37x1j ms05siws hwsy1cff b7h9ocf4"
@@ -37,8 +37,8 @@ const Navbar: React.FC = () => {
           </svg>
         </Link>
       </div>
-      <div className="nav-right">
-        <Link to={`/${currentUser!._id}`} className="user-profile">
+      <div className={styles.nav_right}>
+        <Link to={`/${currentUser!._id}`} className={styles.user_profile}>
           <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
           <p>{currentUser?.username}</p>
         </Link>

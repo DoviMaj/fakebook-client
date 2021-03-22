@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Post from "../../components/Post/Post/Post";
 import PostForm from "../../components/Post/PostForm/PostForm";
-import SideBar from "../../components/TimelineSideBar/TimelineSidebar";
-import "./TimelinePage.scss";
+import TimelineSideBar from "../../components/TimelineSideBar/TimelineSidebar";
+import styles from "./TimelinePage.module.scss";
 import Spinner from "../../components/Spinner/Spinner";
+import ContactBar from "../../components/ContactsBar/ContactBar";
 
 type PostsType = Array<PostType>;
 
@@ -31,9 +32,9 @@ const TimelinePage: React.FC = () => {
     <>
       <Navbar />
 
-      <div className="timeline">
-        <SideBar />
-        <div className="posts">
+      <div className={styles.timeline}>
+        <TimelineSideBar />
+        <div className={styles.posts}>
           <PostForm updatePosts={updatePosts} />
           {!posts ? (
             <Spinner />
@@ -47,6 +48,7 @@ const TimelinePage: React.FC = () => {
             </>
           )}
         </div>
+        <ContactBar />
       </div>
     </>
   );

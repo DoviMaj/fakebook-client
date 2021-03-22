@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { userContext } from "../../GlobalContext";
-import "./TimelineSidebar.scss";
+import styles from "./TimelineSidebar.module.scss";
 import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SideBar: React.FC = () => {
   const currentUser = useContext(userContext);
   return (
-    <div className="side-bar">
+    <div className={styles.side_bar}>
       <Link to={`/${currentUser?._id}`}>
         <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
         <p>{currentUser?.username}</p>
