@@ -10,7 +10,7 @@ import ContactBar from "../../components/ContactsBar/ContactBar";
 type PostsType = Array<PostType>;
 
 const TimelinePage: React.FC = () => {
-  const [posts, setPosts] = useState<PostsType | undefined>(undefined);
+  const [posts, setPosts] = useState<PostsType>();
   useEffect(() => {
     document.title = "Fakebook";
     getPosts();
