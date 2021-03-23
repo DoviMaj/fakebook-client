@@ -8,10 +8,8 @@ import ProfileSection from "../../components/ProfileSection/ProfileSection";
 import "./ProfilePage.scss";
 
 const ProfilePage: React.FC = () => {
-  const [posts, setPosts] = useState<PostType[] | undefined>(undefined);
-  const [profileUser, setProfileUser] = useState<UserType | undefined>(
-    undefined
-  );
+  const [posts, setPosts] = useState<PostType[]>();
+  const [profileUser, setProfileUser] = useState<UserType>();
   const [loading, setLoading] = useState(false);
 
   const currentUser = useContext(userContext);
@@ -19,14 +17,11 @@ const ProfilePage: React.FC = () => {
   let { id } = useParams<ID>();
 
   const getPosts = useCallback(async () => {
-    setLoading(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
     const req = await fetch(`http://localhost:5000/api/profile/${id}`, {
       credentials: "include",
     });
     const res = await req.json();
     setPosts(res.posts);
-    setLoading(false);
   }, [id]);
 
   useEffect(() => {
@@ -50,22 +45,16 @@ const ProfilePage: React.FC = () => {
     <>
       <Navbar />
 
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className="profile-page">
-          <ProfileSection profileUser={profileUser} />
-
-          <div className="posts">
-            {posts &&
-              posts.map((post) => {
-                return (
-                  <Post key={post._id} updatePosts={getPosts} post={post} />
-                );
-              })}
-          </div>
+      <div className="profile-page">
+        <ProfileSection profileUser={profileUser} />
+        {loading && <Spinner />}{" "}
+        <div className="posts">
+          {posts &&
+            posts.map((post) => {
+              return <Post key={post._id} updatePosts={getPosts} post={post} />;
+            })}
         </div>
-      )}
+      </div>
     </>
   );
 };
