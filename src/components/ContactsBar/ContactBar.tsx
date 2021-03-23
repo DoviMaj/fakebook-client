@@ -6,9 +6,9 @@ import { socket } from "../../socket";
 
 const ContactBar = () => {
   const currentUser = useContext(userContext);
-  const [targetUser, setTargetUser] = useState<UserType | undefined>(undefined);
+  const [targetUser, setTargetUser] = useState<UserType>();
   const [displayModal, setDisplayModal] = useState(false);
-  const [chat, setChat] = useState<string[]>([]);
+  const [chat, setChat] = useState<ChatType>([]);
 
   const chooseFriend = (friend: UserType) => {
     setTargetUser(friend);
@@ -16,7 +16,9 @@ const ContactBar = () => {
   };
 
   useEffect(() => {
+    // get chat by id
     setChat([]);
+    targetUser && socket.emit("get chat", currentUser?._id, targetUser!._id);
   }, [targetUser]);
 
   const toggleDisplayModal = () => {
@@ -24,13 +26,39 @@ const ContactBar = () => {
   };
 
   useEffect(() => {
-    socket.on("recieve message", (msg: any) => {
-      msg.from === targetUser!._id && setChat([...chat, msg.input]);
-      console.log(msg, chat);
+    const getCurrentUserId = async () => {
+      const req = await fetch("http://localhost:5000/api/me", {
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      const user = await req.json();
+      return user._id;
+    };
+    socket.on("connect", async () => {
+      // get all chats
+      const currentUserId = await getCurrentUserId();
+      socket.emit("logged-in", currentUserId);
+      console.log("connected");
     });
 
+    // listen to server recieve message event
+    socket.on("recieve message", (msg: { from: string; msg: string }) => {
+      targetUser && msg.from === targetUser!._id && setChat([...chat, msg]);
+      console.log(msg, chat);
+    });
+    // listen to server send chat event
+    socket.on("send chat", (chat) => {
+      setChat(chat);
+      console.log(chat, "current chat");
+    });
     return () => {
       socket.off("recieve message");
+      socket.off("send chat");
+      socket.off("connected");
     };
   });
   return (

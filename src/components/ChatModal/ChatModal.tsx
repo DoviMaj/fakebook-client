@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./ChatModal.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
@@ -8,8 +8,8 @@ type Props = {
   toggleDisplayModal: () => void;
   currentUser: UserType | undefined;
   socket: any;
-  chat: string[];
-  setChat: React.Dispatch<React.SetStateAction<string[]>>;
+  chat: ChatType;
+  setChat: React.Dispatch<React.SetStateAction<ChatType>>;
 };
 
 const ChatModal: React.FC<Props> = ({
@@ -21,14 +21,27 @@ const ChatModal: React.FC<Props> = ({
   setChat,
 }) => {
   const [input, setInput] = useState("");
+  const bottomRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  const scrollToBottom = () => {
+    bottomRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chat]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input !== "") {
-      setChat([...chat, input]);
+      setChat([...chat, { msg: input, from: currentUser!._id }]);
       socket.emit("send message", {
         to: targetUser?._id,
         from: currentUser!._id,
-        input,
+        msg: input,
       });
       setInput("");
     }
@@ -45,14 +58,26 @@ const ChatModal: React.FC<Props> = ({
         <FontAwesomeIcon icon={faTimesCircle} onClick={toggleDisplayModal} />
       </div>
 
-      <div className="intro">
-        <img src={targetUser?.picture_url} alt="" />
-        <strong>{targetUser?.username}</strong>
-        <p>You're friends on Fakebook</p>
+      <div className="chat">
+        <div className="intro">
+          <img src={targetUser?.picture_url} alt="" />
+          <strong>{targetUser?.username}</strong>
+          <p>You're friends on Fakebook</p>
+        </div>{" "}
+        {chat.map((msg, index) => {
+          return msg.from === currentUser!._id ? (
+            <li className="current chat-msg" key={index}>
+              {msg.msg}
+            </li>
+          ) : (
+            <li className="chat-msg" key={index}>
+              {msg.msg}
+            </li>
+          );
+        })}
+        <div ref={bottomRef} className="list-bottom"></div>
       </div>
-      {chat.map((msg, index) => {
-        return <li key={index}>{msg}</li>;
-      })}
+
       <form className="chat-form" onSubmit={handleSubmit}>
         <input
           value={input}
