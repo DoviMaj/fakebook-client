@@ -5,12 +5,41 @@
   padding: 0 20px;
   width: 250px;
 
+  @media (max-width: 911px) {
+    gap: 15px;
+  }
+
+  @media (max-width: 642px) {
+    position: absolute;
+    top: 20px;
+    left: 33px;
+    z-index: 100;
+    flex-direction: revert;
+  }
+
+  .friends_link {
+    @media (max-width: 642px) {
+      margin-left: 20px;
+    }
+  }
+
+  .profile_link {
+    @media (max-width: 642px) {
+      display: none;
+    }
+  }
+
+  .link_text {
+    @media (max-width: 911px) {
+      display: none;
+    }
+  }
+
   img {
     border-radius: 50%;
     width: 30px;
     height: 30px;
   }
-
   a {
     display: flex;
     align-items: center;

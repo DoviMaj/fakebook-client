@@ -9,13 +9,13 @@ const SideBar: React.FC = () => {
   const currentUser = useContext(userContext);
   return (
     <div className={styles.side_bar}>
-      <Link to={`/${currentUser?._id}`}>
+      <Link className={styles.profile_link} to={`/${currentUser?._id}`}>
         <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
-        <p>{currentUser?.username}</p>
+        <p className={styles.link_text}>{currentUser?.username}</p>
       </Link>
-      <Link to="/friends">
+      <Link className={styles.friends_link} to="/friends">
         <FontAwesomeIcon style={{ width: "30px" }} icon={faUserFriends} />{" "}
-        <p>Friends</p>
+        <p className={styles.link_text}>Friends</p>
       </Link>
     </div>
   );
