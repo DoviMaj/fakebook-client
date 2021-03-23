@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import EditPicModal from "../EditPicModal/EditPicModal";
 import { userContext } from "../../GlobalContext";
+import "./ProfileSection.scss";
 
 const ProfileSection = ({
   profileUser,
