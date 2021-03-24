@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./ContactBar.scss";
 import { userContext } from "../../GlobalContext";
 import ChatModal from "../ChatModal/ChatModal";
+import styles from "./ContactBar.module.scss";
 import { socket } from "../../socket";
 
 const ContactBar = () => {
@@ -62,21 +62,21 @@ const ContactBar = () => {
     };
   });
   return (
-    <div className="contact-bar">
+    <div className={styles.contact_bar}>
       <h3>Contacts</h3>
       {currentUser ? (
         currentUser.friends.map((friend) => (
           <div
             key={friend._id}
             onClick={() => chooseFriend(friend)}
-            className="friend"
+            className={styles.friend}
           >
             <img src={friend.picture_url} alt="pic-url" />
             <p>{friend.username}</p>
           </div>
         ))
       ) : (
-        <div className="friend">No Contacts</div>
+        <div className={styles.friend}>No Contacts</div>
       )}
       {displayModal && (
         <ChatModal

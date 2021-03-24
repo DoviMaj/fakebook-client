@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
       <div className={styles.nav_right}>
         <Link to={`/${currentUser!._id}`} className={styles.user_profile}>
           <img alt="user-profile-pic" src={currentUser?.picture_url}></img>
-          <p>{currentUser?.username}</p>
+          <p className={styles.username}>{currentUser?.username}</p>
         </Link>
 
         <a

@@ -1,4 +1,4 @@
-.chat-modal {
+.chat_modal {
   position: fixed;
   bottom: 0;
   right: 84px;
@@ -14,7 +14,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    padding: 0 5px;
+    padding: 6px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
     box-shadow: 1px 1px 8px 3px #3e39390e;
 
@@ -40,6 +40,7 @@
       }
     }
   }
+
   .chat {
     display: flex;
     flex-direction: column;
@@ -48,7 +49,7 @@
     max-height: calc(100vh - 302px);
     padding: 10px;
 
-    .chat-msg {
+    .chat_msg {
       padding: 10px;
       background: blueviolet;
       color: white;
@@ -56,7 +57,7 @@
       border-radius: 20px;
     }
 
-    .chat-msg.current {
+    .chat_msg.current {
       align-self: flex-end;
     }
 
@@ -79,7 +80,7 @@
     }
   }
 
-  .chat-form {
+  .chat_form {
     position: absolute;
     bottom: 10px;
 

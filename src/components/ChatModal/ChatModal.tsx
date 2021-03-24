@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./ChatModal.scss";
+import styles from "./ChatModal.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 
@@ -48,8 +48,8 @@ const ChatModal: React.FC<Props> = ({
   };
 
   return (
-    <div className="chat-modal">
-      <div className="top">
+    <div className={styles.chat_modal}>
+      <div className={styles.top}>
         <div>
           <img src={targetUser?.picture_url} alt="" />
           <p>{targetUser?.username}</p>
@@ -58,34 +58,34 @@ const ChatModal: React.FC<Props> = ({
         <FontAwesomeIcon icon={faTimesCircle} onClick={toggleDisplayModal} />
       </div>
 
-      <div className="chat">
-        <div className="intro">
+      <div className={styles.chat}>
+        <div className={styles.intro}>
           <img src={targetUser?.picture_url} alt="" />
           <strong>{targetUser?.username}</strong>
           <p>You're friends on Fakebook</p>
         </div>{" "}
         {chat.map((msg, index) => {
           return msg.from === currentUser!._id ? (
-            <li className="current chat-msg" key={index}>
+            <li className={`${styles.current} ${styles.chat_msg}`} key={index}>
               {msg.msg}
             </li>
           ) : (
-            <li className="chat-msg" key={index}>
+            <li className={styles.chat_msg} key={index}>
               {msg.msg}
             </li>
           );
         })}
-        <div ref={bottomRef} className="list-bottom"></div>
+        <div ref={bottomRef} className={styles.list_bottom}></div>
       </div>
 
-      <form className="chat-form" onSubmit={handleSubmit}>
+      <form className={styles.chat_form} onSubmit={handleSubmit}>
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           autoFocus
           type="text"
           autoComplete="off"
-          name="chat-message"
+          name={styles.chat_message}
           placeholder="Aa"
           id=""
         />

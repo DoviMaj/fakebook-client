@@ -24,6 +24,11 @@
   padding: 0 13px;
   gap: 10px;
 
+  .username {
+    @media (max-width: 434px) {
+      display: none;
+    }
+  }
   img {
     border-radius: 50%;
     width: 35px;
