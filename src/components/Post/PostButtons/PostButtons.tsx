@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./PostButtons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import { faCommentAlt } from "@fortawesome/free-regular-svg-icons";
+import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { faShareSquare } from "@fortawesome/free-regular-svg-icons";
 
 type Props = {
@@ -56,7 +56,7 @@ const PostButtons: React.FC<Props> = ({
           <p>Like</p>
         </div>
         <div className="button" onClick={focusOnCommentInput}>
-          <FontAwesomeIcon className="icon" icon={faCommentAlt} />
+          <FontAwesomeIcon className="icon" icon={faComment} />
           <p>Comment</p>
         </div>
         <div className="button">
