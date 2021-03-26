@@ -1,6 +1,7 @@
 .edit-modal-wrapper {
   position: relative;
   z-index: 2;
+
   .edit-modal {
     background: white;
     padding: 20px;
@@ -8,14 +9,22 @@
     position: absolute;
     top: -228px;
     left: 38px;
+    width: 20em;
+
+    @media (max-width: 1067px) {
+      position: initial;
+    }
+
     .image {
       width: 200px;
     }
+
     form {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
+
     .close-icon {
       cursor: pointer;
       font-size: larger;

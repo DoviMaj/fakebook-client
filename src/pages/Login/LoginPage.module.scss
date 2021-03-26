@@ -12,7 +12,8 @@
     align-items: center;
     padding: 40px;
     border-radius: 10px;
-    width: 22em;
+    width: calc(100vw - 40%);
+    max-width: 22em;
     height: 10em;
     background: white;
     box-shadow: 0px 1px 6px 4px #0202020a;
