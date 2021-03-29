@@ -28,7 +28,7 @@ const EditPicModal = ({ toggleShowModal }: { toggleShowModal: () => void }) => {
         formData.append("myFile", files[0]);
         try {
           setErrMsg("");
-          await fetch("http://localhost:5000/api/updateProfileImg", {
+          await fetch(`${process.env.REACT_APP_BACKEND}/api/updateProfileImg`, {
             method: "POST",
             body: formData,
             credentials: "include",

@@ -23,32 +23,40 @@ const App: React.FC = () => {
 
   async function checkForSession() {
     setLoading(true);
-    const request = await fetch("http://localhost:5000/session", {
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-    const session = await request.json();
-    if (session) {
-      setIsAuth(true);
-      setUser(session.user);
-    } else {
-      setIsAuth(false);
+    try {
+      const request = await fetch(`${process.env.REACT_APP_BACKEND}/session`, {
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const session = await request.json();
+      if (session) {
+        setIsAuth(true);
+        setUser(session.user);
+      } else {
+        setIsAuth(false);
+      }
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
     }
-    setLoading(false);
   }
 
   const updateCurrentUser = async () => {
-    const req = await fetch("http://localhost:5000/api/me", {
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-    setUser(await req.json());
+    try {
+      const req = await fetch(`${process.env.REACT_APP_BACKEND}/api/me`, {
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      setUser(await req.json());
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const renderLoader = () => <Spinner />;

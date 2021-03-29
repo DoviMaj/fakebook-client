@@ -17,15 +17,18 @@ const CommentForm: React.FC<Props> = ({ postId, updatePosts, inputEl }) => {
     if (comment !== "") {
       const data = { text: comment };
       try {
-        await fetch(`http://localhost:5000/api/posts/${postId}/comments`, {
-          method: "post",
-          credentials: "include",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+        await fetch(
+          `${process.env.REACT_APP_BACKEND}/api/posts/${postId}/comments`,
+          {
+            method: "post",
+            credentials: "include",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
         setComment("");
         updatePosts();
       } catch (err) {

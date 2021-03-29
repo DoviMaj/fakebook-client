@@ -48,7 +48,7 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
       );
 
       try {
-        const req = await fetch("http://localhost:5000/api/posts", {
+        const req = await fetch(`${process.env.REACT_APP_BACKEND}/api/posts`, {
           method: "POST",
           body: formData,
           credentials: "include",

@@ -22,14 +22,17 @@ const UserCard: React.FC<Props> = ({
   const addFriend = async (e: any) => {
     e.preventDefault();
     try {
-      await fetch(`http://localhost:5000/api/friendRequest/${user._id}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        method: "post",
-      });
+      await fetch(
+        `${process.env.REACT_APP_BACKEND}/api/friendRequest/${user._id}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          method: "post",
+        }
+      );
       updateCurrentUser();
       getUsers();
     } catch (err) {
@@ -40,14 +43,17 @@ const UserCard: React.FC<Props> = ({
   const confirmFriend = async (e: any) => {
     e.preventDefault();
     try {
-      await fetch(`http://localhost:5000/api/acceptRequest/${user._id}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        method: "post",
-      });
+      await fetch(
+        `${process.env.REACT_APP_BACKEND}/api/acceptRequest/${user._id}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          method: "post",
+        }
+      );
       updateCurrentUser();
     } catch (err) {
       console.log(err);
@@ -57,7 +63,7 @@ const UserCard: React.FC<Props> = ({
   const unfriend = async (e: any) => {
     e.preventDefault();
     try {
-      await fetch(`http://localhost:5000/api/unfriend/${user._id}`, {
+      await fetch(`${process.env.REACT_APP_BACKEND}/api/unfriend/${user._id}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -75,14 +81,17 @@ const UserCard: React.FC<Props> = ({
   const unrequest = async (e: any) => {
     e.preventDefault();
     try {
-      await fetch(`http://localhost:5000/api/unrequest/${user._id}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        method: "post",
-      });
+      await fetch(
+        `${process.env.REACT_APP_BACKEND}/api/unrequest/${user._id}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          method: "post",
+        }
+      );
       getUsers();
       updateCurrentUser();
     } catch (err) {

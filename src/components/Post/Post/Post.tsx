@@ -48,7 +48,7 @@ const Post: React.FC<Props> = ({ post, updatePosts }) => {
 
   const handleDeletePost = async () => {
     try {
-      await fetch(`http://localhost:5000/api/posts/${post._id}`, {
+      await fetch(`${process.env.REACT_APP_BACKEND}/api/posts/${post._id}`, {
         credentials: "include",
         method: "delete",
       });

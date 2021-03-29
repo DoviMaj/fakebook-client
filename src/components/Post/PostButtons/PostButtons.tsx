@@ -20,10 +20,13 @@ const PostButtons: React.FC<Props> = ({
   const handleLike = async () => {
     if (hasUserLiked) {
       try {
-        await fetch(`http://localhost:5000/api/posts/${post._id}/likes`, {
-          credentials: "include",
-          method: "put",
-        });
+        await fetch(
+          `${process.env.REACT_APP_BACKEND}/api/posts/${post._id}/likes`,
+          {
+            credentials: "include",
+            method: "put",
+          }
+        );
         updatePosts();
         setHasUserLiked(false);
       } catch (err) {
@@ -33,10 +36,13 @@ const PostButtons: React.FC<Props> = ({
     }
 
     try {
-      await fetch(`http://localhost:5000/api/posts/${post._id}/likes`, {
-        credentials: "include",
-        method: "post",
-      });
+      await fetch(
+        `${process.env.REACT_APP_BACKEND}/api/posts/${post._id}/likes`,
+        {
+          credentials: "include",
+          method: "post",
+        }
+      );
       updatePosts();
       setHasUserLiked(true);
     } catch (err) {

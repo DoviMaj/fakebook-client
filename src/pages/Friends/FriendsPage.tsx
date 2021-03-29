@@ -16,7 +16,7 @@ const FriendsPage: React.FC<Props> = ({ updateCurrentUser }) => {
 
   const getUsers = async () => {
     setLoading(true);
-    const req = await fetch("http://localhost:5000/api/notFriends", {
+    const req = await fetch(`${process.env.REACT_APP_BACKEND}/api/notFriends`, {
       credentials: "include",
     });
     setNotFriends(await req.json());

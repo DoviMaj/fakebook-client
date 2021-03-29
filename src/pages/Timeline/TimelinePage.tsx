@@ -17,7 +17,7 @@ const TimelinePage: React.FC = () => {
   }, []);
 
   async function getPosts() {
-    const req = await fetch("http://localhost:5000/api/timeline", {
+    const req = await fetch(`${process.env.REACT_APP_BACKEND}/api/timeline`, {
       credentials: "include",
     });
     const postList = await req.json();

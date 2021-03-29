@@ -27,7 +27,7 @@ const ContactBar = () => {
 
   useEffect(() => {
     const getCurrentUserId = async () => {
-      const req = await fetch("http://localhost:5000/api/me", {
+      const req = await fetch(`${process.env.REACT_APP_BACKEND}/api/me`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",

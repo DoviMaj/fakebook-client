@@ -16,14 +16,14 @@ const LoginPage: React.FC = () => {
         <a
           className="primary-button"
           onClick={() => setLoading(true)}
-          href="http://localhost:5000/auth/facebook"
+          href={`${process.env.REACT_APP_BACKEND}/auth/facebook`}
         >
           Sign-in with Facebook
         </a>
         <a
           className="primary-button"
           onClick={() => setLoading(true)}
-          href="http://localhost:5000/auth/google"
+          href={`${process.env.REACT_APP_BACKEND}/auth/google`}
         >
           Sign-in with Google
         </a>

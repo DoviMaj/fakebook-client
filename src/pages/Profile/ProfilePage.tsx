@@ -17,9 +17,12 @@ const ProfilePage: React.FC = () => {
   let { id } = useParams<ID>();
 
   const getPosts = useCallback(async () => {
-    const req = await fetch(`http://localhost:5000/api/profile/${id}`, {
-      credentials: "include",
-    });
+    const req = await fetch(
+      `${process.env.REACT_APP_BACKEND}/api/profile/${id}`,
+      {
+        credentials: "include",
+      }
+    );
     const res = await req.json();
     setPosts(res.posts);
   }, [id]);
@@ -31,9 +34,12 @@ const ProfilePage: React.FC = () => {
     async function fetchUser() {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-      const request = await fetch(`http://localhost:5000/api/profile/${id}`, {
-        credentials: "include",
-      });
+      const request = await fetch(
+        `${process.env.REACT_APP_BACKEND}/api/profile/${id}`,
+        {
+          credentials: "include",
+        }
+      );
       const res = await request.json();
       setProfileUser(res.user);
       document.title = `Fakebook | ${res.user?.username}`;
