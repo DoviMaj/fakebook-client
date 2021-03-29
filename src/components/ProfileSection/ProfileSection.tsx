@@ -15,14 +15,13 @@ const ProfileSection = ({
   const [isCurrentUser, setIsCurrentUser] = useState(false);
   const currentUser = useContext(userContext);
   useEffect(() => {
-    profileUser &&
-      currentUser!._id === profileUser!._id &&
-      setIsCurrentUser(true);
+    profileUser && setIsCurrentUser(currentUser!._id === profileUser!._id);
   }, [profileUser, currentUser]);
 
   const toggleShowModal = () => {
     setShowEditModal(!showEditModal);
   };
+
   return (
     <div className="profile-section">
       <img
