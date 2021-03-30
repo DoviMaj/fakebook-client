@@ -48,15 +48,13 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
       );
 
       try {
-        const req = await fetch(`${process.env.REACT_APP_BACKEND}/api/posts`, {
+        await fetch(`${process.env.REACT_APP_BACKEND}/api/posts`, {
           method: "POST",
           body: formData,
           credentials: "include",
         });
-        updatePosts();
-        console.log(await req.json());
-
         if (showModal) toggleShowModal();
+        updatePosts();
         setFiles(null);
         setInput("");
       } catch (err) {
@@ -64,9 +62,11 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
       }
     }
   };
+
   const handleChange = (e: any) => {
     setInput(e.target.value);
   };
+
   function toggleShowModal() {
     setShowModal(!showModal);
   }
