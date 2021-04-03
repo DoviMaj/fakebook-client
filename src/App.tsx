@@ -18,42 +18,45 @@ const App: React.FC = () => {
   const [user, setUser] = useState<UserType>();
 
   useEffect(() => {
-    checkForSession();
-  }, []);
+    (async () => {
+      setLoading(true);
+      try {
+        const request = await fetch(
+          `${process.env.REACT_APP_BACKEND}/session`,
+          {
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
+        const session = await request.json();
+        console.log(session, process.env.REACT_APP_BACKEND);
 
-  async function checkForSession() {
-    setLoading(true);
-    try {
-      const request = await fetch(`${process.env.REACT_APP_BACKEND}/session`, {
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const session = await request.json();
-      if (session) {
-        setIsAuth(true);
-        setUser(session.user);
-      } else {
-        setIsAuth(false);
+        if (session) {
+          setIsAuth(true);
+          setUser(session.user);
+        } else {
+          setIsAuth(false);
+        }
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
       }
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+    })();
+  }, []);
 
   const updateCurrentUser = async () => {
     try {
-      const req = await fetch(`${process.env.REACT_APP_BACKEND}/api/me`, {
+      const request = await fetch(`${process.env.REACT_APP_BACKEND}/api/me`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       });
-      setUser(await req.json());
+      setUser(await request.json());
     } catch (err) {
       console.log(err);
     }
