@@ -46,8 +46,9 @@
     flex-direction: column;
     gap: 5px;
     overflow-y: scroll;
-    max-height: calc(100vh - 302px);
+    max-height: 70%;
     padding: 10px;
+    height: auto;
 
     .chat_msg {
       padding: 10px;
