@@ -11,6 +11,7 @@ View live [here](https://fakebook-client.vercel.app/)
 * React
 * React router
 * Typescript
+* CSS Modules
 * Sass
 
 # Mobile Demo:
