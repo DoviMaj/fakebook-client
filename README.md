@@ -2,7 +2,8 @@
 
 Front-End for Facebook Clone project
 
-View Back-End [here](https://github.com/DoviMaj/fakebook-server)
+View live [here](https://fakebook-client.vercel.app/)
+[Back-End code repository](https://github.com/DoviMaj/fakebook-server)
 
 # Tech
 
@@ -11,10 +12,12 @@ View Back-End [here](https://github.com/DoviMaj/fakebook-server)
 * Typescript
 * Sass
 
-# Screenshoots
-
-Mobile:
+# Mobile Demo:
 ![mobile](https://user-images.githubusercontent.com/36450233/113522976-9238aa00-95ad-11eb-96b5-864c36efa47f.gif)
+
+# Desktop Demo:
+![desktop](https://user-images.githubusercontent.com/36450233/113523107-8a2d3a00-95ae-11eb-80f8-3f137045e457.gif)
+
 
 # Getting Started with Create React App
 
