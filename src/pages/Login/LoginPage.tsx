@@ -9,7 +9,7 @@ const LoginPage: React.FC = () => {
   }, []);
   return (
     <div className={styles.login_wrapper}>
-      <div className={styles.login_form}>
+      <form className={styles.login_form}>
         <div>
           <p className={styles.logo}>fakebook</p>
         </div>
@@ -27,8 +27,8 @@ const LoginPage: React.FC = () => {
         >
           Sign-in with Google
         </a>
-      </div>
-      {loading && <Spinner />}
+      </form>
+      {loading && <Spinner loginPage />}
     </div>
   );
 };

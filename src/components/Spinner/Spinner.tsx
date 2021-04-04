@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./Spinner.module.scss";
 
-const Spinner = () => {
+const Spinner = ({ loginPage }: { loginPage?: boolean }) => {
   return (
-    <div className={styles.spinner}>
+    <div
+      className={styles.spinner}
+      style={{ position: loginPage ? "fixed" : "initial" }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
