@@ -32,7 +32,6 @@ const App: React.FC = () => {
           }
         );
         const session = await request.json();
-        console.log(session, process.env.REACT_APP_BACKEND);
 
         if (session) {
           setIsAuth(true);

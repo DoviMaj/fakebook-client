@@ -42,18 +42,15 @@ const ContactBar = () => {
       // get all chats
       const currentUserId = await getCurrentUserId();
       socket.emit("logged-in", currentUserId);
-      console.log("connected");
     });
 
     // listen to server recieve message event
     socket.on("recieve message", (msg: { from: string; msg: string }) => {
       targetUser && msg.from === targetUser!._id && setChat([...chat, msg]);
-      console.log(msg, chat);
     });
     // listen to server send chat event
     socket.on("send chat", (chat) => {
       setChat(chat);
-      console.log(chat, "current chat");
     });
     return () => {
       socket.off("recieve message");

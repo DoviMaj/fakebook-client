@@ -31,21 +31,13 @@ const PostForm: React.FC<Props> = ({ updatePosts }) => {
           Extension === "jpg"
         ) {
           formData.append("myFile", files[0]);
-          console.log(formData.get("myFile"), "hi from file");
         } else {
-          setErrMsg("file uploaded isnt an image");
+          setErrMsg("File uploaded isn't an image...");
         }
       }
       if (input !== "") {
-        console.log(input);
-
         formData.append("text", input);
       }
-      console.log(
-        input !== "" || files,
-        formData.get("myFile"),
-        formData.get("text")
-      );
 
       try {
         await fetch(`${process.env.REACT_APP_BACKEND}/api/posts`, {

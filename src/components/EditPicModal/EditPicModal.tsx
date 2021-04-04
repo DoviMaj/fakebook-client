@@ -24,7 +24,6 @@ const EditPicModal = ({ toggleShowModal }: { toggleShowModal: () => void }) => {
         Extension === "jpeg" ||
         Extension === "jpg"
       ) {
-        console.log(files[0]);
         formData.append("myFile", files[0]);
         try {
           setErrMsg("");
