@@ -1,3 +1,21 @@
+# fakebook-client
+
+Front-End for Facebook Clone project
+
+View Back-End [here](https://github.com/DoviMaj/fakebook-server)
+
+# Tech
+
+* React
+* React router
+* Typescript
+* Sass
+
+# Screenshoots
+
+Mobile:
+![mobile](https://user-images.githubusercontent.com/36450233/113522976-9238aa00-95ad-11eb-96b5-864c36efa47f.gif)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
