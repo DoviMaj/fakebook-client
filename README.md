@@ -4,7 +4,7 @@ Front-End for Facebook Clone project
 
 View live [here](https://fakebook-client.vercel.app/)
 
-[Back-End code repository](https://github.com/DoviMaj/fakebook-server)
+Back-End lives [here](https://github.com/DoviMaj/fakebook-server)
 
 ## Tech
 
