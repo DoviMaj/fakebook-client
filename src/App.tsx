@@ -65,7 +65,9 @@ const App: React.FC = () => {
 
   return (
     <>
-      {!loading && (
+      {loading ? (
+        <Spinner />
+      ) : (
         <>
           <userContext.Provider value={user}>
             <Router basename={process.env.PUBLIC_URL}>
