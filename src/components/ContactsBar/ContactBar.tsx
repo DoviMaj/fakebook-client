@@ -3,6 +3,7 @@ import { userContext } from "../../GlobalContext";
 import ChatModal from "../ChatModal/ChatModal";
 import styles from "./ContactBar.module.scss";
 import { socket } from "../../socket";
+import { Link } from "react-router-dom";
 
 const ContactBar = () => {
   const currentUser = useContext(userContext);
@@ -62,16 +63,26 @@ const ContactBar = () => {
     <div className={styles.contact_bar}>
       <h3>Contacts</h3>
       {currentUser ? (
-        currentUser.friends.map((friend) => (
-          <div
-            key={friend._id}
-            onClick={() => chooseFriend(friend)}
-            className={styles.friend}
-          >
-            <img src={friend.picture_url} alt="pic-url" />
-            <p>{friend.username}</p>
-          </div>
-        ))
+        currentUser.friends.length > 0 ? (
+          currentUser.friends.map((friend) => (
+            <div
+              key={friend._id}
+              onClick={() => chooseFriend(friend)}
+              className={styles.friend}
+            >
+              <img src={friend.picture_url} alt="pic-url" />
+              <p>{friend.username}</p>
+            </div>
+          ))
+        ) : (
+          <p>
+            Add{" "}
+            <Link style={{ textDecoration: "underline" }} to="/friends">
+              Friends
+            </Link>{" "}
+            to be able to chat with them :)
+          </p>
+        )
       ) : (
         <div className={styles.friend}>No Contacts</div>
       )}
