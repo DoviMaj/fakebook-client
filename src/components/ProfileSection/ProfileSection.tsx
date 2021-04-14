@@ -36,11 +36,14 @@ const ProfileSection = ({
             icon={faEdit}
           />
         )}
-        <img
-          className="user-pic"
-          alt="user-pic"
-          src={profileUser?.picture_url}
-        ></img>
+        {profileUser?.picture_url && (
+          <img
+            className="user-pic"
+            alt="user-pic"
+            src={profileUser!.picture_url}
+          ></img>
+        )}
+        
         <strong>{profileUser?.username}</strong>
         {showEditModal && <EditPicModal toggleShowModal={toggleShowModal} />}
       </div>
