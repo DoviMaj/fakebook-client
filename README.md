@@ -4,9 +4,9 @@ Front-End for Facebook Clone project
 
 View live [here](https://fakebook-client.vercel.app/)
 
-[Back-End code repository](https://github.com/DoviMaj/fakebook-server)
+Back-End repo [here](https://github.com/DoviMaj/fakebook-server)
 
-# Tech
+## Tech
 
 * React
 * React router
@@ -14,10 +14,10 @@ View live [here](https://fakebook-client.vercel.app/)
 * CSS Modules
 * Sass
 
-# Mobile Demo:
+## Mobile Demo:
 ![mobile](https://user-images.githubusercontent.com/36450233/113522976-9238aa00-95ad-11eb-96b5-864c36efa47f.gif)
 
-# Desktop Demo:
+## Desktop Demo:
 ![desktop](https://user-images.githubusercontent.com/36450233/113523107-8a2d3a00-95ae-11eb-80f8-3f137045e457.gif)
 
 
