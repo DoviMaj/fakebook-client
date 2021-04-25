@@ -10,7 +10,7 @@ Back-End repo [here](https://github.com/DoviMaj/fakebook-server)
 
 * React
 * React router
-* Typescript
+* TypeScript
 * CSS Modules
 * Sass
 
